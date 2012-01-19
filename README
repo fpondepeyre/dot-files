@@ -12,7 +12,12 @@ cd dyt.local
 chmod 777 app/cache
 chmod 777 app/logs
 chmod 777 app/config/parameters.ini
+
+Run the vendors script:
 php bin/vendors install
+
+And don't forget to clear your cache:
+php ./app/console cache:clear
 
 ### Apache vhost
 
