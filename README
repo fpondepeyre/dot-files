@@ -1,6 +1,9 @@
 DYT
 ========================
 
+Welcome to "DO YOU TEACH" project.
+This document contains information on how to download and start using "dyt".
+
 1) Installation
 ---------------
 
@@ -11,10 +14,7 @@ chmod 777 app/logs
 chmod 777 app/config/parameters.ini
 php bin/vendors install
 
-2) Apache vhost
----------------
-
-Exemple:
+### Apache vhost
 
 <VirtualHost *:80>
   ServerName dyt.local
