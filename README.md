@@ -15,7 +15,7 @@ This document contains information on how to download and start using "dyt".
 
 Copy parameters.ini-dist and configure it:
 
-    cp app/config/parameters.ini-dist app/config/parameter.ini
+    cp app/config/parameters.ini-dist app/config/parameters.ini
 	chmod 777 app/config/parameters.ini
 
 Run the vendors script:
