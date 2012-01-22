@@ -30,12 +30,10 @@ And don't forget to clear your cache:
     <VirtualHost *:80>
         ServerName dyt.local
         DocumentRoot "/usr/local/zend/apache2/htdocs/dyt.local/web"
-        DirectoryIndex index.php
         <Directory "/usr/local/zend/apache2/htdocs/dyt.local/web">
-            Options +Indexes +FollowSymLinks +ExecCGI
-            DirectoryIndex index.php
+            DirectoryIndex app.php
+            Options -Indexes FollowSymLinks SymLinksifOwnerMatch
             AllowOverride All
-            Order allow,deny
             Allow from all
         </Directory>
     </VirtualHost>
