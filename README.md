@@ -25,6 +25,11 @@ And don't forget to clear your cache:
 
     php ./app/console cache:clear
 
+Copy phpunit.xml.dist for launch test
+    
+    cp app/phpunit.xml.dist app/phpunit.xml
+    phpunit -c app/
+
 ### Apache vhost
 
     <VirtualHost *:80>
