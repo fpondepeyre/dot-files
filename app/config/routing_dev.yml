@@ -1,0 +1,4 @@
+DytWebsiteBundle:
+    resource: "@DytWebsiteBundle/Controller/"
+    type:     annotation
+    prefix:   /
