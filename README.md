@@ -25,6 +25,11 @@ And don't forget to clear your cache:
 
     php ./app/console cache:clear
 
+Create database and tables
+
+    php app/console doctrine:schema:create
+    php app/console doctrine:schema:update --force
+
 Copy phpunit.xml.dist for launch test
     
     cp app/phpunit.xml.dist app/phpunit.xml
