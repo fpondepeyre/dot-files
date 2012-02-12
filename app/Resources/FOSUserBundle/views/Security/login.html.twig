@@ -3,7 +3,8 @@
 {% block body %}
     {% block fos_user_content %}
         {% if error %}
-            <div class="alert alert-error">
+            <div class="alert alert-error fade in">
+                <a class="close" data-dismiss="alert">×</a>
                 {{ error }}
             </div>
         {% endif %}
