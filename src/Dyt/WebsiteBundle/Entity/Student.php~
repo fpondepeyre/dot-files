@@ -1,0 +1,58 @@
+<?php
+
+namespace Dyt\WebsiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="student")
+ */
+class Student
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Classroom", inversedBy="students")
+     * @ORM\JoinColumn(name="classroom_id", referencedColumnName="id")
+     */
+    protected $classroom;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Ref_level", inversedBy="students")
+     * @ORM\JoinColumn(name="ref_level_id", referencedColumnName="id")
+     */
+    protected $ref_level;
+    
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
+    protected $first_name;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
+    protected $last_name;
+    
+    /**
+     * @ORM\Column(type="date")
+     */
+    protected $birthday;
+    
+    /**
+     * @ORM\Column(type="string", length=1)
+     */
+    protected $sexe;
+    
+
+    public function __construct()
+    {
+    }
+
+
+ }
