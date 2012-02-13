@@ -52,7 +52,8 @@
                             {% if app.user.username is defined %}
                                 <a href="{{ path('fos_user_security_logout') }}">Logout</a> | Logged in as <a href="#">{{ app.user.username }}</a>
                             {% else %}
-                                <a href="{{ path('fos_user_security_login') }}">Login</a>
+                                <a href="{{ path('fos_user_security_login') }}">Login</a> |
+                                <a href="{{ path('fos_user_registration_register') }}">Sign up</a>
                             {% endif %}
                         </p>
                     </div>
