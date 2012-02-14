@@ -3,6 +3,8 @@
 namespace Dyt\WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * @ORM\Entity
@@ -39,8 +41,6 @@ class ref_level
 
     public function __construct()
     {
-        parent::__construct();
-        
         $this->students = new ArrayCollection();
     }
 

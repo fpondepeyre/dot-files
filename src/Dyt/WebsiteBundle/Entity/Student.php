@@ -16,19 +16,19 @@ class Student
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Classroom", inversedBy="students")
      * @ORM\JoinColumn(name="classroom_id", referencedColumnName="id")
      */
     protected $classroom;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Ref_level", inversedBy="students")
      * @ORM\JoinColumn(name="ref_level_id", referencedColumnName="id")
      */
     protected $ref_level;
-    
+
     /**
      * @ORM\Column(type="string", length=45)
      */
@@ -38,28 +38,28 @@ class Student
      * @ORM\Column(type="string", length=45)
      */
     protected $last_name;
-    
+
     /**
-     * @ORM\Column(type="date")
-     */
+    * @ORM\Column(type="datetime")
+    */
     protected $birthday;
-    
+
     /**
      * @ORM\Column(type="string", length=1)
      */
     protected $sexe;
-    
+
 
     public function __construct()
     {
     }
 
 
- 
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -79,7 +79,7 @@ class Student
     /**
      * Get first_name
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -99,7 +99,7 @@ class Student
     /**
      * Get last_name
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -111,7 +111,7 @@ class Student
      *
      * @param date $birthday
      */
-    public function setBirthday($birthday)
+    public function setBirthday(\DateTime $birthday)
     {
         $this->birthday = $birthday;
     }
@@ -119,7 +119,7 @@ class Student
     /**
      * Get birthday
      *
-     * @return date 
+     * @return date
      */
     public function getBirthday()
     {
@@ -139,7 +139,7 @@ class Student
     /**
      * Get sexe
      *
-     * @return string 
+     * @return string
      */
     public function getSexe()
     {
@@ -159,7 +159,7 @@ class Student
     /**
      * Get classroom
      *
-     * @return Dyt\WebsiteBundle\Entity\Classroom 
+     * @return Dyt\WebsiteBundle\Entity\Classroom
      */
     public function getClassroom()
     {
@@ -179,7 +179,7 @@ class Student
     /**
      * Get ref_level
      *
-     * @return Dyt\WebsiteBundle\Entity\Ref_level 
+     * @return Dyt\WebsiteBundle\Entity\Ref_level
      */
     public function getRefLevel()
     {
