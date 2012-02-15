@@ -8,14 +8,29 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Dyt\WebsiteBundle\Entity\School;
 use Dyt\WebsiteBundle\Entity\User;
 
-class LoadSchoolData extends AbstractFixture implements OrderedFixtureInterface {
+class LoadSchoolData extends AbstractFixture implements OrderedFixtureInterface
+{
+    /**
+     * {@inheritdoc}
+     *
+     * @param ObjectManager $manager
+     */
+    function load(ObjectManager $manager)
+    {
+        $users[] = array(
+            'username' => 'florian',
+            'email'    => 'fpondepeyre@gmail.com',
+            'password' => 'pass4florian',
+            'school'   => 'Ecole Jean Moulin',
+            'enabled'  => true
+        );
 
-    function load(ObjectManager $manager) {
-        $users = array(
-            array('username' => 'florian', 'email' => 'fpondepeyre@gmail.com', 'password' => 'pass4florian',
-                'school' => 'Ecole Jean Moulin'),
-            array('username' => 'laurent', 'email' => 'laurent.chavane@gmail.com', 'password' => 'pass4laurent',
-                'school' => 'Ecole de Borest')
+        $users[] = array(
+            'username' => 'laurent',
+            'email'    => 'laurent.chavane@gmail.com',
+            'password' => 'pass4laurent',
+            'school'   => 'Ecole de Borest',
+            'enabled'  => true
         );
 
         foreach ($users as $user) {
@@ -23,7 +38,7 @@ class LoadSchoolData extends AbstractFixture implements OrderedFixtureInterface 
             $rowU->setUsername($user['username']);
             $rowU->setEmail($user['email']);
             $rowU->setPlainPassword($user['password']);
-            $rowU->setEnabled(true);
+            $rowU->setEnabled($user['enabled']);
             $manager->persist($rowU);
             $manager->flush();
 
@@ -37,8 +52,13 @@ class LoadSchoolData extends AbstractFixture implements OrderedFixtureInterface 
         }
     }
 
-    public function getOrder() {
+    /**
+     * {@inheritdoc}
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
         return 1;
     }
-
 }

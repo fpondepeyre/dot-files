@@ -7,14 +7,32 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Dyt\WebsiteBundle\Entity\RefLevel;
 
-class LoadRefLevelData extends AbstractFixture implements OrderedFixtureInterface {
+class LoadRefLevelData extends AbstractFixture implements OrderedFixtureInterface
+{
+    function load(ObjectManager $manager)
+    {
+        $refLevels[] = array(
+            'culture'     => 'fr',
+            'level'       => 'Toute petite section',
+            'short_level' => 'TPS'
+        );
 
-    function load(ObjectManager $manager) {
-        $refLevels = array(
-            array('culture' => 'fr', 'level' => 'Toute petite section', 'short_level' => 'TPS'),
-            array('culture' => 'fr', 'level' => 'Petite section', 'short_level' => 'PS'),
-            array('culture' => 'fr', 'level' => 'Moyenne section', 'short_level' => 'MS'),
-            array('culture' => 'fr', 'level' => 'Grande section', 'short_level' => 'GS')
+        $refLevels[] = array(
+            'culture'     => 'fr',
+            'level'       => 'Petite section',
+            'short_level' => 'PS'
+        );
+
+        $refLevels[] = array(
+            'culture'     => 'fr',
+            'level'       => 'Moyenne section',
+            'short_level' => 'MS'
+        );
+
+        $refLevels[] = array(
+            'culture'     => 'fr',
+            'level'       => 'Grande section',
+            'short_level' => 'GS'
         );
 
         foreach ($refLevels as $refLevel) {
@@ -25,13 +43,18 @@ class LoadRefLevelData extends AbstractFixture implements OrderedFixtureInterfac
 
             $manager->persist($row);
             $manager->flush();
-            
+
             $this->addReference($refLevel['short_level'], $row);
         }
     }
 
-    public function getOrder() {
+    /**
+     * {@inheritdoc}
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
         return 3;
     }
-
 }
