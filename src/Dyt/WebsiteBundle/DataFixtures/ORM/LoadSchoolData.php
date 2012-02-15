@@ -22,7 +22,8 @@ class LoadSchoolData extends AbstractFixture implements OrderedFixtureInterface 
             $rowU = new User();
             $rowU->setUsername($user['username']);
             $rowU->setEmail($user['email']);
-            $rowU->setPassword($user['password']);
+            $rowU->setPlainPassword($user['password']);
+            $rowU->setEnabled(true);
             $manager->persist($rowU);
             $manager->flush();
 
