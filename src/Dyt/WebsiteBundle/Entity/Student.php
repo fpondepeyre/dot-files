@@ -40,7 +40,7 @@ class Student
     protected $last_name;
 
     /**
-    * @ORM\Column(type="datetime")
+    * @ORM\Column(type="date")
     */
     protected $birthday;
 
@@ -55,11 +55,10 @@ class Student
     }
 
 
-
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -79,7 +78,7 @@ class Student
     /**
      * Get first_name
      *
-     * @return string
+     * @return string 
      */
     public function getFirstName()
     {
@@ -99,7 +98,7 @@ class Student
     /**
      * Get last_name
      *
-     * @return string
+     * @return string 
      */
     public function getLastName()
     {
@@ -111,7 +110,7 @@ class Student
      *
      * @param date $birthday
      */
-    public function setBirthday(\DateTime $birthday)
+    public function setBirthday($birthday)
     {
         $this->birthday = $birthday;
     }
@@ -119,7 +118,7 @@ class Student
     /**
      * Get birthday
      *
-     * @return date
+     * @return date 
      */
     public function getBirthday()
     {
@@ -139,7 +138,7 @@ class Student
     /**
      * Get sexe
      *
-     * @return string
+     * @return string 
      */
     public function getSexe()
     {
@@ -159,7 +158,7 @@ class Student
     /**
      * Get classroom
      *
-     * @return Dyt\WebsiteBundle\Entity\Classroom
+     * @return Dyt\WebsiteBundle\Entity\Classroom 
      */
     public function getClassroom()
     {
@@ -179,7 +178,7 @@ class Student
     /**
      * Get ref_level
      *
-     * @return Dyt\WebsiteBundle\Entity\RefLevel
+     * @return Dyt\WebsiteBundle\Entity\RefLevel 
      */
     public function getRefLevel()
     {

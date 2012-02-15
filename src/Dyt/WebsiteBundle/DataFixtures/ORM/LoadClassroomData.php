@@ -13,12 +13,22 @@ class LoadClassroomData extends AbstractFixture implements OrderedFixtureInterfa
     {
         $classroom = new Classroom();
         $classroom->setName('My classroom');
-        $classroom->setSchool($manager->merge($this->getReference('school')));
+        $classroom->setSchool($manager->merge($this->getReference('florian')));
 
         $manager->persist($classroom);
         $manager->flush();
         
-        $this->addReference('classroom', $classroom);
+        $this->addReference('classroom1', $classroom);
+        
+        $classroom = new Classroom();
+        $classroom->setName('My classroom');
+        $classroom->setSchool($manager->merge($this->getReference('laurent')));
+
+        $manager->persist($classroom);
+        $manager->flush();
+        
+        $this->addReference('classroom2', $classroom);
+
     }
     
     public function getOrder()
