@@ -24,7 +24,7 @@ class Student
     protected $classroom;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Ref_level", inversedBy="students")
+     * @ORM\ManyToOne(targetEntity="RefLevel", inversedBy="students")
      * @ORM\JoinColumn(name="ref_level_id", referencedColumnName="id")
      */
     protected $ref_level;
@@ -169,9 +169,9 @@ class Student
     /**
      * Set ref_level
      *
-     * @param Dyt\WebsiteBundle\Entity\Ref_level $refLevel
+     * @param Dyt\WebsiteBundle\Entity\RefLevel $refLevel
      */
-    public function setRefLevel(\Dyt\WebsiteBundle\Entity\Ref_level $refLevel)
+    public function setRefLevel(\Dyt\WebsiteBundle\Entity\RefLevel $refLevel)
     {
         $this->ref_level = $refLevel;
     }
@@ -179,7 +179,7 @@ class Student
     /**
      * Get ref_level
      *
-     * @return Dyt\WebsiteBundle\Entity\Ref_level
+     * @return Dyt\WebsiteBundle\Entity\RefLevel
      */
     public function getRefLevel()
     {

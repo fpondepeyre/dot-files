@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(name="ref_level")
  */
-class ref_level
+class RefLevel
 {
     /**
      * @ORM\Id
