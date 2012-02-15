@@ -30,6 +30,10 @@ Create database and tables
     php app/console doctrine:schema:create
     php app/console doctrine:schema:update --force
 
+Load fixtures
+
+    php app/console doctrine:fixtures:load
+
 Copy phpunit.xml.dist for launch test
     
     cp app/phpunit.xml.dist app/phpunit.xml
