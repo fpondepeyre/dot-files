@@ -18,22 +18,22 @@ class RefLevel
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @ORM\Column(type="string", length=2)
      */
     protected $culture;
-    
+
     /**
      * @ORM\Column(type="string", length=45)
      */
     protected $level;
-    
+
     /**
      * @ORM\Column(type="string", length=15)
      */
     protected $short_level;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Student", mappedBy="ref_level")
      */
@@ -47,9 +47,19 @@ class RefLevel
 
 
     /**
+     * toString method
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->short_level;
+    }
+
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -69,7 +79,7 @@ class RefLevel
     /**
      * Get culture
      *
-     * @return string 
+     * @return string
      */
     public function getCulture()
     {
@@ -89,7 +99,7 @@ class RefLevel
     /**
      * Get level
      *
-     * @return string 
+     * @return string
      */
     public function getLevel()
     {
@@ -109,7 +119,7 @@ class RefLevel
     /**
      * Get short_level
      *
-     * @return string 
+     * @return string
      */
     public function getShortLevel()
     {
@@ -129,7 +139,7 @@ class RefLevel
     /**
      * Get students
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getStudents()
     {
