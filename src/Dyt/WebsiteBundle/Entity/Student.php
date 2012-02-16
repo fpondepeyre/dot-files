@@ -3,6 +3,7 @@
 namespace Dyt\WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -49,16 +50,34 @@ class Student
      */
     protected $sexe;
 
+   /**
+    * @var \DateTime
+    *
+    * @ORM\Column(name="created_at", type="datetime")
+    * @Gedmo\Timestampable(on="create")
+    */
+    private $created_at;
+
+    /**
+    * @var \DateTime
+    *
+    * @ORM\Column(name="updated_at", type="datetime")
+    * @Gedmo\Timestampable(on="update")
+    */
+    private $updated_at;
 
     public function __construct()
     {
+        $now = new \DateTime();
+        $this->setCreatedAt($now);
+        $this->setUpdatedAt($now);
     }
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -78,7 +97,7 @@ class Student
     /**
      * Get first_name
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -98,7 +117,7 @@ class Student
     /**
      * Get last_name
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -118,7 +137,7 @@ class Student
     /**
      * Get birthday
      *
-     * @return date 
+     * @return date
      */
     public function getBirthday()
     {
@@ -138,7 +157,7 @@ class Student
     /**
      * Get sexe
      *
-     * @return string 
+     * @return string
      */
     public function getSexe()
     {
@@ -158,7 +177,7 @@ class Student
     /**
      * Get classroom
      *
-     * @return Dyt\WebsiteBundle\Entity\Classroom 
+     * @return Dyt\WebsiteBundle\Entity\Classroom
      */
     public function getClassroom()
     {
@@ -178,10 +197,50 @@ class Student
     /**
      * Get ref_level
      *
-     * @return Dyt\WebsiteBundle\Entity\RefLevel 
+     * @return Dyt\WebsiteBundle\Entity\RefLevel
      */
     public function getRefLevel()
     {
         return $this->ref_level;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->created_at = $createdAt;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
     }
 }
