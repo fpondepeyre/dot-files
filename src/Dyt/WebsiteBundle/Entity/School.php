@@ -17,32 +17,42 @@ class School
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="schools")
      * @ORM\JoinColumn(name="fos_user_id", referencedColumnName="id")
      */
     protected $user;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Classroom", mappedBy="school")
      */
     protected $classrooms;
-    
+
     /**
      * @ORM\Column(type="string", length=100)
      */
     protected $name;
 
     public function __construct()
-    {        
+    {
         $this->classrooms = new ArrayCollection();
+    }
+
+    /**
+     * toString method
+     *
+     * @return string The name
+     */
+    public function __toString()
+    {
+        return $this->name;
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -62,7 +72,7 @@ class School
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -82,7 +92,7 @@ class School
     /**
      * Get user
      *
-     * @return Dyt\WebsiteBundle\Entity\User 
+     * @return Dyt\WebsiteBundle\Entity\User
      */
     public function getUser()
     {
@@ -102,7 +112,7 @@ class School
     /**
      * Get classrooms
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return Doctrine\Common\Collections\Collection
      */
     public function getClassrooms()
     {

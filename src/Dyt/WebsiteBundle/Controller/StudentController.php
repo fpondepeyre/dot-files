@@ -3,11 +3,14 @@
 namespace Dyt\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Dyt\WebsiteBundle\Entity\Student;
 use Dyt\WebsiteBundle\Form\StudentType;
+use Dyt\WebsiteBundle\Entity\Classroom;
+use Dyt\WebsiteBundle\Form\ClassroomType;
 
 /**
  * Student controller.
@@ -55,22 +58,6 @@ class StudentController extends Controller
          );
     }
 
-    /**
-     * Displays a form to create a new Student entity.
-     *
-     * @Route("/new", name="student_new")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Student();
-        $form   = $this->createForm(new StudentType(), $entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView()
-        );
-    }
 
     /**
      * Creates a new Student entity.
@@ -92,7 +79,7 @@ class StudentController extends Controller
             $em->flush();
 
             return $this->redirect($this->generateUrl('student_show', array('id' => $entity->getId())));
-            
+
         }
 
         return array(
@@ -199,5 +186,28 @@ class StudentController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+
+    /**
+     * Displays a form to create a new Student entity.
+     *
+     * @Route("/new", name="student_new")
+     * @Template()
+     */
+    public function newAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $students = $em->getRepository('DytWebsiteBundle:Student')->findAll();
+
+        $classroom = new Classroom();
+        foreach($students as $student) {
+            $classroom->getStudents()->add($student);
+        }
+
+        $form = $this->createForm(new ClassroomType(), $classroom);
+
+        return array(
+            'form' => $form->createView()
+        );
     }
 }

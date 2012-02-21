@@ -109,6 +109,7 @@ class Classroom
     public function addStudent(\Dyt\WebsiteBundle\Entity\Student $students)
     {
         $this->students[] = $students;
+        $students->setClassroom($this);
     }
 
     /**
