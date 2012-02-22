@@ -243,4 +243,5 @@ class Student
     {
         return $this->updated_at;
     }
+
 }

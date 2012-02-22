@@ -1,20 +1,59 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-<h1>Student creation</h1>
 
-<form action="{{ path('student_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
-</form>
+    <h2>Student <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
+    <hr/>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('student') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <form class="form-horizontal form-search" action="{{ path('student_create') }}" method="post" {{ form_enctype(form) }}>
+
+        <div class="row">
+            <div class="span12">
+                <h3>School</h3>
+                {{ form_widget(form.name, { 'attr': {'placeholder': 'name'} }) }}
+
+                <h3>Students</h3>
+                <div id="classroom_students" data-prototype="<div>
+                     <div id='classroom_students_$$name$$'>
+                        <div>
+                            <input type='text' id='classroom_students_$$name$$_first_name' name='classroom[students][$$name$$][first_name]' required='required' maxlength='45' placeholder='last name'/>
+                            <input type='text' id='classroom_students_$$name$$_last_name' name='classroom[students][$$name$$][last_name]' required='required' maxlength='45'placeholder='first name'/>
+                            <select id='classroom_students_$$name$$_ref_level' name='classroom[students][$$name$$][ref_level]' required='required'>
+                                <option value='43'>TPS</option>
+                                <option value='44'>PS</option><option value='45'>MS</option>
+                                <option value='46'>GS</option>
+                            </select>
+                            <a href='#' class='delete_link btn'>remove</a>
+                        </div>
+                    </div>
+                </div>">
+
+                {% for student in form.students %}
+                    <div>
+                        {{ form_widget(student.last_name, { 'attr': {'placeholder': 'last name'} }) }}
+                        {{ form_widget(student.first_name, { 'attr': {'placeholder': 'first name'} }) }}
+                        {{ form_widget(student.ref_level, { 'attr': {'placeholder': 'level'} }) }}
+                    </div>
+                {% endfor %}
+
+                {{ form_rest(form) }}
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <div class="form-actions">
+                    <a href="#" class="btn jslink">Add a student</a>
+                    <button class="btn btn-primary" type="submit">Save changes</button>
+                    <button class="btn" type="reset">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {% include "DytWebsiteBundle:Student:js.html.twig" %}
 {% endblock %}

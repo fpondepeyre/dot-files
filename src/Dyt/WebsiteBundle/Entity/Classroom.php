@@ -39,8 +39,6 @@ class Classroom
         $this->students = new ArrayCollection();
     }
 
-
-
     /**
      * toString method
      *
@@ -102,16 +100,6 @@ class Classroom
     }
 
     /**
-     * Add students
-     *
-     * @param Dyt\WebsiteBundle\Entity\Student $students
-     */
-    public function addStudent(\Dyt\WebsiteBundle\Entity\Student $students)
-    {
-        $this->students[] = $students;
-    }
-
-    /**
      * Get students
      *
      * @return Doctrine\Common\Collections\Collection
@@ -119,5 +107,25 @@ class Classroom
     public function getStudents()
     {
         return $this->students;
+    }
+
+    /**
+     * Set Tags
+     *
+     * @param ArrayCollection $tags
+     */
+    public function setStudents(ArrayCollection $students)
+    {
+        $this->students = $students;
+    }
+
+    /**
+     * Add students
+     *
+     * @param Dyt\WebsiteBundle\Entity\Student $students
+     */
+    public function addStudents(\Dyt\WebsiteBundle\Entity\Student $students)
+    {
+        $this->students[] = $students;
     }
 }
