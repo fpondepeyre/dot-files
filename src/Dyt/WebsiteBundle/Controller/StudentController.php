@@ -58,36 +58,6 @@ class StudentController extends Controller
          );
     }
 
-
-    /**
-     * Creates a new Student entity.
-     *
-     * @Route("/create", name="student_create")
-     * @Method("post")
-     * @Template("DytWebsiteBundle:Student:new.html.twig")
-     */
-    public function createAction()
-    {
-        $entity  = new Student();
-        $request = $this->getRequest();
-        $form    = $this->createForm(new StudentType(), $entity);
-        $form->bindRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('student_show', array('id' => $entity->getId())));
-
-        }
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView()
-        );
-    }
-
     /**
      * Displays a form to edit an existing Student entity.
      *
@@ -201,13 +171,46 @@ class StudentController extends Controller
 
         $classroom = new Classroom();
         foreach($students as $student) {
-            $classroom->getStudents()->add($student);
+            $classroom->addStudents($student);
         }
 
         $form = $this->createForm(new ClassroomType(), $classroom);
 
         return array(
             'form' => $form->createView()
+        );
+    }
+
+    /**
+     * Creates a new Student entity.
+     *
+     * @Route("/create", name="student_create")
+     * @Method("post")
+     * @Template("DytWebsiteBundle:Student:new.html.twig")
+     */
+    public function createAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $students = $em->getRepository('DytWebsiteBundle:Student')->findAll();
+
+        $classroom = new Classroom();
+        foreach($students as $student) {
+            $classroom->addStudents($student);
+        }
+
+        $form = $this->createForm(new ClassroomType(), $classroom);
+        $form->bindRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($classroom);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('student', array()));
+        }
+
+        return array(
+            'form'   => $form->createView()
         );
     }
 }
