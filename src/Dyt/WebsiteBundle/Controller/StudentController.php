@@ -204,13 +204,16 @@ class StudentController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($classroom);
+            foreach($classroom->getStudents() as $student) {
+                $em->persist($student);
+            }
             $em->flush();
 
             return $this->redirect($this->generateUrl('student', array()));
         }
 
         return array(
-            'form'   => $form->createView()
+            'form' => $form->createView()
         );
     }
 }

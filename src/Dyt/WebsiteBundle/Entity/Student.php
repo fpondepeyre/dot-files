@@ -41,12 +41,12 @@ class Student
     protected $last_name;
 
     /**
-    * @ORM\Column(type="date")
+    * @ORM\Column(type="date", nullable=true)
     */
     protected $birthday;
 
     /**
-     * @ORM\Column(type="string", length=1)
+     * @ORM\Column(type="string", length=1, nullable=true)
      */
     protected $sexe;
 
@@ -73,6 +73,10 @@ class Student
         $this->setUpdatedAt($now);
     }
 
+    public function __toString()
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
 
     /**
      * Get id

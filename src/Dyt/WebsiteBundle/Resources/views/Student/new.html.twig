@@ -10,19 +10,23 @@
         <div class="row">
             <div class="span12">
                 <h3>School</h3>
+                {{ form_errors(form) }}
                 {{ form_widget(form.name, { 'attr': {'placeholder': 'name'} }) }}
 
                 <h3>Students</h3>
                 <div id="classroom_students" data-prototype="<div>
                      <div id='classroom_students_$$name$$'>
                         <div>
-                            <input type='text' id='classroom_students_$$name$$_first_name' name='classroom[students][$$name$$][first_name]' required='required' maxlength='45' placeholder='last name'/>
-                            <input type='text' id='classroom_students_$$name$$_last_name' name='classroom[students][$$name$$][last_name]' required='required' maxlength='45'placeholder='first name'/>
-                            <select id='classroom_students_$$name$$_ref_level' name='classroom[students][$$name$$][ref_level]' required='required'>
-                                <option value='43'>TPS</option>
-                                <option value='44'>PS</option><option value='45'>MS</option>
-                                <option value='46'>GS</option>
+                            <input type='text' class='input-medium' id='classroom_students_$$name$$_first_name' name='classroom[students][$$name$$][first_name]' required='required' maxlength='45' placeholder='last name'/>
+                            <input type='text' class='input-small' id='classroom_students_$$name$$_last_name' name='classroom[students][$$name$$][last_name]' required='required' maxlength='45' placeholder='first name'/>
+                            <select class='input-small' id='classroom_students_$$name$$_ref_level' name='classroom[students][$$name$$][ref_level]' required='required'>
+                                <option value='55'>TPS</option>
+                                <option value='56'>PS</option>
+                                <option value='57'>MS</option>
+                                <option value='58'>GS</option>
                             </select>
+                            <input type='text' class='' id='classroom_students_$$name$$_birthday' name='classroom[students][$$name$$][birthday]' required='required' maxlength='45' placeholder='birthday'/>
+                            <input type='text' class='input-small' id='classroom_students_$$name$$_sexe' name='classroom[students][$$name$$][sexe]' required='required' maxlength='45' placeholder='sex'/>
                             <a href='#' class='delete_link btn'>remove</a>
                         </div>
                     </div>
@@ -30,9 +34,20 @@
 
                 {% for student in form.students %}
                     <div>
-                        {{ form_widget(student.last_name, { 'attr': {'placeholder': 'last name'} }) }}
-                        {{ form_widget(student.first_name, { 'attr': {'placeholder': 'first name'} }) }}
-                        {{ form_widget(student.ref_level, { 'attr': {'placeholder': 'level'} }) }}
+                        <div>
+                            {{ form_errors(student.last_name) }}
+                            {{ form_widget(student.last_name, { 'attr': {'placeholder': 'last name'} }) }}
+                            {{ form_errors(student.first_name) }}
+                            {{ form_widget(student.first_name, { 'attr': {'placeholder': 'first name'} }) }}
+                            {{ form_errors(student.ref_level) }}
+                            {{ form_widget(student.ref_level, { 'attr': {'placeholder': 'level'} }) }}
+                            {{ form_errors(student.birthday) }}
+                            {{ form_widget(student.birthday, { 'attr': {'placeholder': 'birthday'} }) }}
+                            {{ form_errors(student.sexe) }}
+                            {{ form_widget(student.sexe, { 'attr': {'placeholder': 'sex'} }) }}
+                            {#{ form_widget(student.classroom) }#}
+                            <a href='#' class='delete_link btn'>remove</a>
+                        </div>
                     </div>
                 {% endfor %}
 

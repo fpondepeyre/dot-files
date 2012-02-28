@@ -25,7 +25,7 @@ class Classroom
     protected $school;
 
     /**
-     * @ORM\OneToMany(targetEntity="Student", mappedBy="classroom")
+     * @ORM\OneToMany(targetEntity="Student", mappedBy="classroom", cascade={"persist"})
      */
     protected $students;
 
