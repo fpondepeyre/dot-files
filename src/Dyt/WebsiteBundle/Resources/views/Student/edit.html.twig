@@ -1,26 +1,74 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-<h1>Student edit</h1>
 
-<form action="{{ path('student_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
-</form>
+    <h2>Student <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
+    <hr/>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('student') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('student_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+    <form class="form-horizontal form-search" action="{{ path('student_create') }}" method="post" {{ form_enctype(form) }}>
+
+        <div class="row">
+            <div class="span12">
+                <h3>School</h3>
+                {{ form_errors(form) }}
+                {{ form_widget(form.name, { 'attr': {'placeholder': 'name'} }) }}
+
+                <h3>Students</h3>
+                <div id="classroom_students" data-prototype="<div>
+                     <div id='classroom_students_$$name$$'>
+                        <div>
+                            <input type='text' class='input-medium' id='classroom_students_$$name$$_first_name' name='classroom[students][$$name$$][first_name]' required='required' maxlength='45' placeholder='last name'/>
+                            <input type='text' class='input-small' id='classroom_students_$$name$$_last_name' name='classroom[students][$$name$$][last_name]' required='required' maxlength='45' placeholder='first name'/>
+                            <select class='input-small' id='classroom_students_$$name$$_ref_level' name='classroom[students][$$name$$][ref_level]' required='required'>
+                                <option value='55'>TPS</option>
+                                <option value='56'>PS</option>
+                                <option value='57'>MS</option>
+                                <option value='58'>GS</option>
+                            </select>
+                            <input type='text' class='' id='classroom_students_$$name$$_birthday' name='classroom[students][$$name$$][birthday]' required='required' maxlength='45' placeholder='birthday'/>
+                            <input type='text' class='input-small' id='classroom_students_$$name$$_sexe' name='classroom[students][$$name$$][sexe]' required='required' maxlength='45' placeholder='sex'/>
+                            <a href='#' class='delete_link btn'>remove</a>
+                        </div>
+                    </div>
+                </div>">
+
+                {% for student in form.students %}
+                    <div>
+                        <div>
+                            {{ form_errors(student.last_name) }}
+                            {{ form_widget(student.last_name, { 'attr': {'placeholder': 'last name'} }) }}
+                            {{ form_errors(student.first_name) }}
+                            {{ form_widget(student.first_name, { 'attr': {'placeholder': 'first name'} }) }}
+                            {{ form_errors(student.ref_level) }}
+                            {{ form_widget(student.ref_level, { 'attr': {'placeholder': 'level'} }) }}
+                            {{ form_errors(student.birthday) }}
+                            {{ form_widget(student.birthday, { 'attr': {'placeholder': 'birthday'} }) }}
+                            {{ form_errors(student.sexe) }}
+                            {{ form_widget(student.sexe, { 'attr': {'placeholder': 'sex'} }) }}
+                            {#{ form_widget(student.classroom) }#}
+                            <a href='#' class='delete_link btn'>remove</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {{ form_rest(form) }}
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <div class="form-actions">
+                    <a href="#" class="btn jslink">Add a student</a>
+                    <button class="btn btn-primary" type="submit">Save changes</button>
+                    <button class="btn" type="reset">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {% include "DytWebsiteBundle:Student:js.html.twig" %}
 {% endblock %}

@@ -12,17 +12,20 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Student
 {
     /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="Classroom", inversedBy="students")
      * @ORM\JoinColumn(name="classroom_id", referencedColumnName="id")
+     * @var type
      */
-    protected $classroom;
+    private $classroom;
 
     /**
      * @ORM\ManyToOne(targetEntity="RefLevel", inversedBy="students")
@@ -41,8 +44,8 @@ class Student
     protected $last_name;
 
     /**
-    * @ORM\Column(type="date", nullable=true)
-    */
+     * @ORM\Column(type="date", nullable=true)
+     */
     protected $birthday;
 
     /**
@@ -50,20 +53,20 @@ class Student
      */
     protected $sexe;
 
-   /**
-    * @var \DateTime
-    *
-    * @ORM\Column(name="created_at", type="datetime")
-    * @Gedmo\Timestampable(on="create")
-    */
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     */
     private $created_at;
 
     /**
-    * @var \DateTime
-    *
-    * @ORM\Column(name="updated_at", type="datetime")
-    * @Gedmo\Timestampable(on="update")
-    */
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
     private $updated_at;
 
     public function __construct()

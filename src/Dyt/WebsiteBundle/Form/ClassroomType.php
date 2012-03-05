@@ -26,7 +26,7 @@ class ClassroomType extends AbstractType
             'data_class' => 'Dyt\WebsiteBundle\Entity\Classroom',
         );
     }
-    
+
     public function getName()
     {
         return 'classroom';

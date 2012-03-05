@@ -1,29 +1,26 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
+<h2>Student <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
+<hr/>
 
-    <h2>Student <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
-    <hr/>
-
-    <form class="form-horizontal form-search" action="{{ path('student_create') }}" method="post" {{ form_enctype(form) }}>
-
-        <div class="row">
-            <div class="span12">
-                <h3>School</h3>
-                {{ form_errors(form) }}
-                {{ form_widget(form.name, { 'attr': {'placeholder': 'name'} }) }}
-
-                <h3>Students</h3>
-                <div id="classroom_students" data-prototype="<div>
-                     <div id='classroom_students_$$name$$'>
+<form action="{{ path('student_create') }}" method="post" {{ form_enctype(form) }} class="form-horizontal form-search">
+    <div class="row">
+        <div class="span12">
+            <h3>School</h3>
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name, { 'attr': {'placeholder': 'classroom name'} }) }}
+            <h3>Students</h3>
+            <div id="classroom_students" data-prototype="<div>
+                    <div id='classroom_students_$$name$$'>
                         <div>
                             <input type='text' class='input-medium' id='classroom_students_$$name$$_first_name' name='classroom[students][$$name$$][first_name]' required='required' maxlength='45' placeholder='last name'/>
                             <input type='text' class='input-small' id='classroom_students_$$name$$_last_name' name='classroom[students][$$name$$][last_name]' required='required' maxlength='45' placeholder='first name'/>
                             <select class='input-small' id='classroom_students_$$name$$_ref_level' name='classroom[students][$$name$$][ref_level]' required='required'>
-                                <option value='55'>TPS</option>
-                                <option value='56'>PS</option>
-                                <option value='57'>MS</option>
-                                <option value='58'>GS</option>
+                                <option value='1'>TPS</option>
+                                <option value='2'>PS</option>
+                                <option value='3'>MS</option>
+                                <option value='4'>GS</option>
                             </select>
                             <input type='text' class='' id='classroom_students_$$name$$_birthday' name='classroom[students][$$name$$][birthday]' required='required' maxlength='45' placeholder='birthday'/>
                             <input type='text' class='input-small' id='classroom_students_$$name$$_sexe' name='classroom[students][$$name$$][sexe]' required='required' maxlength='45' placeholder='sex'/>
@@ -31,7 +28,6 @@
                         </div>
                     </div>
                 </div>">
-
                 {% for student in form.students %}
                     <div>
                         <div>
@@ -42,31 +38,29 @@
                             {{ form_errors(student.ref_level) }}
                             {{ form_widget(student.ref_level, { 'attr': {'placeholder': 'level'} }) }}
                             {{ form_errors(student.birthday) }}
-                            {{ form_widget(student.birthday, { 'attr': {'placeholder': 'birthday'} }) }}
+                            {{ form_widget(student.birthday, { 'attr': {'placeholder': 'birthday (oct 8, 2008)'} }) }}
                             {{ form_errors(student.sexe) }}
-                            {{ form_widget(student.sexe, { 'attr': {'placeholder': 'sex'} }) }}
-                            {#{ form_widget(student.classroom) }#}
+                            {{ form_widget(student.sexe, { 'attr': {'placeholder': 'sex (1|2)'} }) }}
                             <a href='#' class='delete_link btn'>remove</a>
                         </div>
                     </div>
                 {% endfor %}
-
-                {{ form_rest(form) }}
-
-                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="span12">
-                <div class="form-actions">
-                    <a href="#" class="btn jslink">Add a student</a>
-                    <button class="btn btn-primary" type="submit">Save changes</button>
-                    <button class="btn" type="reset">Cancel</button>
-                </div>
+    </div>
+
+    {{ form_rest(form) }}
+
+    <div class="row">
+        <div class="span12">
+            <div class="form-actions">
+                <a href="#" class="btn jslink">Add a student</a>
+                <button class="btn btn-primary" type="submit">Save changes</button>
+                <button class="btn" type="reset">Cancel</button>
             </div>
         </div>
-
-    </form>
+    </div>
+</form>
 {% endblock %}
 
 {% block javascripts %}

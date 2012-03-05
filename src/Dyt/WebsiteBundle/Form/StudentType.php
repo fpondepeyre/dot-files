@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
 class StudentType extends AbstractType
-{   
+{
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
@@ -14,7 +14,6 @@ class StudentType extends AbstractType
             ->add('last_name', 'text', array('attr' => array('class' => 'input-medium')))
             ->add('birthday', null, array('widget' => 'single_text'))
             ->add('sexe', 'text', array('attr' => array('class' => 'input-small')))
-            //->add('classroom', null)
             ->add('ref_level', null, array('attr' => array('class' => 'input-small')))
         ;
     }
