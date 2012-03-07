@@ -44,8 +44,6 @@ class RefLevel
         $this->students = new ArrayCollection();
     }
 
-
-
     /**
      * toString method
      *

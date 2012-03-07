@@ -59,32 +59,6 @@ class StudentController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Student entity.
-     *
-     * @Route("/{id}/edit", name="student_edit")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('DytWebsiteBundle:Student')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Student entity.');
-        }
-
-        $editForm = $this->createForm(new StudentType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
      * Edits an existing Student entity.
      *
      * @Route("/{id}/update", name="student_update")
@@ -159,12 +133,12 @@ class StudentController extends Controller
     }
 
     /**
-     * Displays a form to create a new Student entity.
+     * Displays a form to edit an existing Student entity.
      *
-     * @Route("/new", name="student_new")
+     * @Route("/edit", name="student_edit")
      * @Template()
      */
-    public function newAction(Request $request)
+    public function editAction(Request $request)
     {
         $em = $this->getDoctrine()->getEntityManager();
         $students = $em->getRepository('DytWebsiteBundle:Student')->findAll();
@@ -182,7 +156,26 @@ class StudentController extends Controller
     }
 
     /**
-     * Creates a new Student entity.
+     * Displays a form to create a new Student entity.
+     *
+     * @Route("/new", name="student_new")
+     * @Template()
+     */
+    public function newAction(Request $request)
+    {
+        $classroom = new Classroom();
+        $student = new Student();
+        $classroom->addStudents($student);
+
+        $form = $this->createForm(new ClassroomType(), $classroom);
+
+        return array(
+            'form' => $form->createView()
+        );
+    }
+
+    /**
+     * Create a new Student entity.
      *
      * @Route("/create", name="student_create")
      * @Method("post")
@@ -190,12 +183,14 @@ class StudentController extends Controller
      */
     public function createAction(Request $request)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $students = $em->getRepository('DytWebsiteBundle:Student')->findAll();
-
         $classroom = new Classroom();
-        foreach($students as $student) {
-            $classroom->addStudents($student);
+        $classrooms = $request->request->get('classroom', array());
+        if (isset($classrooms['students'])) {
+            $students = $classrooms['students'];
+            foreach($students as $student) {
+                $student = new Student();
+                $classroom->addStudents($student);
+            }
         }
 
         $form = $this->createForm(new ClassroomType(), $classroom);
@@ -204,13 +199,15 @@ class StudentController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($classroom);
+            foreach($classroom->getStudents() as $student) {
+                $em->persist($student);
+            }
             $em->flush();
-
             return $this->redirect($this->generateUrl('student', array()));
         }
 
         return array(
-            'form'   => $form->createView()
+            'form' => $form->createView()
         );
     }
 }

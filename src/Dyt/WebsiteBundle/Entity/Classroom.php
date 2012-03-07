@@ -12,11 +12,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Classroom
 {
     /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="School", inversedBy="classrooms")
@@ -25,29 +27,18 @@ class Classroom
     protected $school;
 
     /**
-     * @ORM\OneToMany(targetEntity="Student", mappedBy="classroom")
-     */
-    protected $students;
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    protected $name;
-
-    public function __construct()
-    {
-        $this->students = new ArrayCollection();
-    }
-
-    /**
-     * toString method
+     * @var string $name
      *
-     * @return string
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    public function __toString()
-    {
-        return $this->getName();
-    }
+    private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Student", mappedBy="classroom", cascade={"persist"})
+     * @var type
+     */
+    private $students;
+
 
     /**
      * Get id
@@ -77,6 +68,11 @@ class Classroom
     public function getName()
     {
         return $this->name;
+    }
+
+    public function __construct()
+    {
+        $this->students = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -110,9 +106,9 @@ class Classroom
     }
 
     /**
-     * Set Tags
+     * Set students
      *
-     * @param ArrayCollection $tags
+     * @param ArrayCollection $students
      */
     public function setStudents(ArrayCollection $students)
     {
@@ -127,5 +123,6 @@ class Classroom
     public function addStudents(\Dyt\WebsiteBundle\Entity\Student $students)
     {
         $this->students[] = $students;
+        $students->setClassroom($this);
     }
 }
