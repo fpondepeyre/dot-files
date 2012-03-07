@@ -13,7 +13,7 @@ class StudentType extends AbstractType
             ->add('first_name', 'text', array('attr' => array('class' => 'input-small')))
             ->add('last_name', 'text', array('attr' => array('class' => 'input-medium')))
             ->add('birthday', null, array('widget' => 'single_text'))
-            ->add('sexe', 'text', array('attr' => array('class' => 'input-small')))
+            ->add('sex', 'text', array('attr' => array('class' => 'input-small')))
             ->add('ref_level', null, array('attr' => array('class' => 'input-small')))
         ;
     }

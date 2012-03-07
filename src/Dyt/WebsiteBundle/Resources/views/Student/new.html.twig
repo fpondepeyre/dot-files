@@ -23,7 +23,7 @@
                                 <option value='4'>GS</option>
                             </select>
                             <input type='text' class='' id='classroom_students_$$name$$_birthday' name='classroom[students][$$name$$][birthday]' required='required' maxlength='45' placeholder='birthday'/>
-                            <input type='text' class='input-small' id='classroom_students_$$name$$_sexe' name='classroom[students][$$name$$][sexe]' required='required' maxlength='45' placeholder='sex'/>
+                            <input type='text' class='input-small' id='classroom_students_$$name$$_sex' name='classroom[students][$$name$$][sex]' required='required' maxlength='45' placeholder='sex'/>
                             <a href='#' class='delete_link btn'>remove</a>
                         </div>
                     </div>
@@ -39,8 +39,8 @@
                             {{ form_widget(student.ref_level, { 'attr': {'placeholder': 'level'} }) }}
                             {{ form_errors(student.birthday) }}
                             {{ form_widget(student.birthday, { 'attr': {'placeholder': 'birthday (oct 8, 2008)'} }) }}
-                            {{ form_errors(student.sexe) }}
-                            {{ form_widget(student.sexe, { 'attr': {'placeholder': 'sex (1|2)'} }) }}
+                            {{ form_errors(student.sex) }}
+                            {{ form_widget(student.sex, { 'attr': {'placeholder': 'sex (1|2)'} }) }}
                             <a href='#' class='delete_link btn'>remove</a>
                         </div>
                     </div>

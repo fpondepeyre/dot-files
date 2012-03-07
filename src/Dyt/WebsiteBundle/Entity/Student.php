@@ -51,7 +51,7 @@ class Student
     /**
      * @ORM\Column(type="string", length=1, nullable=true)
      */
-    protected $sexe;
+    protected $sex;
 
     /**
      * @var \DateTime
@@ -152,23 +152,23 @@ class Student
     }
 
     /**
-     * Set sexe
+     * Set sex
      *
-     * @param string $sexe
+     * @param string $sex
      */
-    public function setSexe($sexe)
+    public function setSex($sex)
     {
-        $this->sexe = $sexe;
+        $this->sex = $sex;
     }
 
     /**
-     * Get sexe
+     * Get sex
      *
      * @return string
      */
-    public function getSexe()
+    public function getSex()
     {
-        return $this->sexe;
+        return $this->sex;
     }
 
     /**

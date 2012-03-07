@@ -32,7 +32,7 @@
                     <td>{{ entity.firstname }}</td>
                     <td>{{ entity.lastname|trans }}</td>
                     <td>{% if entity.birthday %}{{ entity.birthday|date('Y-m-d H:i:s') }}{% endif%}</td>
-                    <td>{{ entity.sexe }}</td>
+                    <td>{{ entity.sex }}</td>
                 </tr>
             {% endfor %}
             </tbody>

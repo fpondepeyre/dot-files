@@ -21,7 +21,7 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             'lastname'  => 'RANA-COEUGNET',
             'classroom' => 'classroom1',
             'level'     => 'PS',
-            'sexe'      => 1,
+            'sex'       => 1,
             'birthday'  => '2008-01-06'
         );
 
@@ -30,7 +30,7 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             'lastname'  => 'REIGNIER',
             'classroom' => 'classroom1',
             'level'     => 'PS',
-            'sexe'      => 2,
+            'sex'       => 2,
             'birthday'  => '2008-02-09'
         );
 
@@ -39,7 +39,7 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             'lastname'  => 'SEVRE',
             'classroom' => 'classroom1',
             'level'     => 'MS',
-            'sexe'      => 2,
+            'sex'       => 2,
             'birthday'  => '2007-12-21'
         );
 
@@ -48,7 +48,7 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             'lastname'  => 'JACQUEAU',
             'classroom' => 'classroom1',
             'level'     => 'MS',
-            'sexe'      => 1,
+            'sex'       => 1,
             'birthday'  => '2007-04-01'
         );
 
@@ -57,7 +57,7 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             'lastname'  => 'GALLOIS',
             'classroom' => 'classroom1',
             'level'     => 'MS',
-            'sexe'      => 1,
+            'sex'       => 1,
             'birthday'  => '2007-09-21'
         );
 
@@ -65,7 +65,8 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             'firstname' => 'Mattéo',
             'lastname'  => 'LIMA DA CUNHA',
             'classroom' => 'classroom2',
-            'level'     => 'MS', 'sexe' => 1,
+            'level'     => 'MS',
+            'sex' => 1,
             'birthday'  => '2007-04-19'
         );
 
@@ -74,7 +75,7 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             'lastname'  => 'DJERMANI',
             'classroom' => 'classroom2',
             'level'     => 'MS',
-            'sexe'      => 2,
+            'sex'       => 2,
             'birthday'  => '2007-06-12'
         );
 
@@ -83,7 +84,7 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             'lastname'  => 'ROGER',
             'classroom' => 'classroom2',
             'level'     => 'TPS',
-            'sexe'      => 2,
+            'sex'       => 2,
             'birthday'  => '2009-01-27'
         );
 
@@ -92,7 +93,7 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             'lastname'  => 'LANCIAUX',
             'classroom' => 'classroom2',
             'level'     => 'TPS',
-            'sexe'      => 2,
+            'sex'       => 2,
             'birthday'  => '2009-01-21');
 
         $students[] = array(
@@ -100,7 +101,7 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             'lastname'  => 'CHENE',
             'classroom' => 'classroom2',
             'level'     => 'PS',
-            'sexe'      => 2,
+            'sex'       => 2,
             'birthday'  => '2008-10-23'
         );
 
@@ -112,7 +113,7 @@ class LoadStudentData extends AbstractFixture implements OrderedFixtureInterface
             $row->setLastName($student['lastname']);
             $row->setClassroom($manager->merge($this->getReference($student['classroom'])));
             $row->setRefLevel($manager->merge($this->getReference($student['level'])));
-            $row->setSexe($student['sexe']);
+            $row->setsex($student['sex']);
             $row->setBirthday(date_create($student['birthday']));
 
             $manager->persist($row);
