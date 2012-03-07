@@ -48,14 +48,41 @@
                             <li><a href="#">About</a></li>
                         </ul>
 
-                        <p class="navbar-text pull-right">
+                        <ul class="nav pull-right">
+                            <li class="dropdown first">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools Menu <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li class="first"><a href="http://www.symfony.com">Symfony</a></li>
+                                    <li><a href="http://twitter.github.com/bootstrap/">bootstrap</a></li>
+                                    <li><a href="http://nodejs.org/">node.js</a></li>
+                                    <li><a href="http://lesscss.org/">less</a></li>
+                                    <li class="divider"><span></span></li>
+                                    <li class="last"><a href="http://www.google.com/">google</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown last">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider-vertical"></li>
                             {% if app.user.username is defined %}
-                                <a href="{{ path('fos_user_security_logout') }}">Logout</a> | Logged in as <a href="#">{{ app.user.username }}</a>
+                                <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                                <li class="divider-vertical"></li>
+                                <li>Logged in as <a href="#">{{ app.user.username }}</a><li>
                             {% else %}
-                                <a href="{{ path('fos_user_security_login') }}">Login</a> |
-                                <a href="{{ path('fos_user_registration_register') }}">Sign up</a>
+                                <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                                <li class="divider-vertical"></li>
+                                <li><a href="{{ path('fos_user_registration_register') }}">Sign up</a></li>
                             {% endif %}
-                        </p>
+                        </ul>
+
                     </div>
                 </div>
             </div>
