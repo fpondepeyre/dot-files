@@ -203,6 +203,8 @@ class StudentController extends Controller
                 $em->persist($student);
             }
             $em->flush();
+
+            $this->get('session')->setFlash('notice', 'Your changes were saved!');
             return $this->redirect($this->generateUrl('student', array()));
         }
 

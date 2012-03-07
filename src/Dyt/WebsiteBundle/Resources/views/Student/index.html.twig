@@ -1,6 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
+
+{% if app.session.hasFlash('notice') %}
+    <div class="alert alert-success">
+        <a class="close" data-dismiss="alert">×</a>
+        {{ app.session.flash('notice') }}
+    </div>
+{% endif %}
+
 <h2>Student <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
 <h3>Student list</h3>
 
