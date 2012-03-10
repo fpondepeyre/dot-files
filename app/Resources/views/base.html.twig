@@ -21,6 +21,7 @@
     <link href="{{ asset('bundles/dytwebsite/css/style.css') }}" rel="stylesheet">
     <script src="{{ asset('bundles/dytwebsite/js/libs/modernizr-2.5.3-respond-1.1.0.min.js') }}"></script>
 </head>
+
 <body>
     <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
@@ -73,27 +74,28 @@
                             <li class="divider-vertical"></li>
                             <li><a href="{{ path('fos_user_registration_register') }}">Sign up</a></li>
                         {% endif %}
-                        </ul>
+                    </ul>
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="container-fluid">
-            {% block body %}{% endblock %}
-        </div>
+    <div class="container-fluid">
+        {% block body %}{% endblock %}
+    </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{{ asset('bundles/dytwebsite/js/libs/jquery-1.7.1.min.js') }}"><\/script>')</script>
-        <script src="{{ asset('bundles/dytwebsite/js/libs/bootstrap/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('bundles/dytwebsite/js/script.js') }}"></script>
-        {% block javascripts %}{% endblock %}
-        <script>
-                var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-                (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-                g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-                s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
-    </body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ asset('bundles/dytwebsite/js/libs/jquery-1.7.1.min.js') }}"><\/script>')</script>
+    <script src="{{ asset('bundles/dytwebsite/js/libs/bootstrap/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/dytwebsite/js/script.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+    <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+
+</body>
 </html>
