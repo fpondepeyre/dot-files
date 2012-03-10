@@ -25,61 +25,7 @@
 <body>
     <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="#">Project name</a>
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="{{ path('student') }}">Student</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
-
-                    <ul class="nav pull-right">
-                        <li class="dropdown first">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools Menu <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li class="first"><a href="http://www.symfony.com">Symfony</a></li>
-                                <li><a href="http://twitter.github.com/">bootstrap</a></li>
-                                <li><a href="http://nodejs.org/">node.js</a></li>
-                                <li><a href="http://lesscss.org/">less</a></li>
-                                <li class="divider"><span></span></li>
-                                <li class="last"><a href="http://www.google.com/">google</a></li>
-                            </ul>
-                        </li>
-                        <li class="divider-vertical"></li>
-                        <li class="dropdown last">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </li>
-                        <li class="divider-vertical"></li>
-                        {% if app.user.username is defined %}
-                            <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
-                            <li class="divider-vertical"></li>
-                            <li>Logged in as <a href="#">{{ app.user.username }}</a><li>
-                        {% else %}
-                            <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
-                            <li class="divider-vertical"></li>
-                            <li><a href="{{ path('fos_user_registration_register') }}">Sign up</a></li>
-                        {% endif %}
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include "DytWebsiteBundle:Default:menu.html.twig" %}
 
     <div class="container-fluid">
         {% block body %}{% endblock %}
