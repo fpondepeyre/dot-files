@@ -50,8 +50,7 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: %mailer_transport%
-    host:      %mailer_host%
+    transport: gmail
     username:  %mailer_user%
     password:  %mailer_password%
 
@@ -60,9 +59,29 @@ jms_security_extra:
     secure_all_services: false
 
 fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    db_driver:     orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Dyt\WebsiteBundle\Entity\User
+    user_class:    Dyt\WebsiteBundle\Entity\User
+
+    from_email:
+        address:     fpondepeyre@gmail.com
+        sender_name: Dyt
+
+    registration:
+        confirmation:
+            enabled:    true
+            from_email:
+                address:     fpondepeyre@gmail.com
+                sender_name: Dyt
+
+    resetting:
+        email:
+            from_email:
+                address:     fpondepeyre@gmail.com
+                sender_name: Dyt
+
+    service:
+        mailer: fos_user.mailer.twig_swift
 
 stof_doctrine_extensions:
     orm:
