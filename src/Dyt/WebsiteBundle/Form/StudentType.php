@@ -10,12 +10,31 @@ class StudentType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('first_name', 'text', array('attr' => array('class' => 'input-small')))
-            ->add('last_name', 'text', array('attr' => array('class' => 'input-medium')))
+            ->add('first_name', 'text', array(
+                'attr' => array(
+                    'placeholder' => "first name",
+                    'class'       => 'input-small'
+                )
+            ))
+            ->add('last_name', 'text', array(
+                'attr' => array(
+                    'placeholder' => "last name",
+                    'class'       => 'input-medium'
+                )
+            ))
             ->add('birthday', null, array('widget' => 'single_text'))
-            ->add('sex', 'text', array('attr' => array('class' => 'input-small')))
-            ->add('ref_level', null, array('attr' => array('class' => 'input-small')))
-        ;
+            ->add('sex', 'text', array(
+                'attr' => array(
+                    'placeholder' => 'sex',
+                    'class' => 'input-small'
+                )
+            ))
+            ->add('ref_level', null, array(
+                'attr' => array(
+                    'placeholder' => 'level',
+                    'class'       => 'input-small'
+                )
+            ));
     }
 
     public function getDefaultOptions(array $options)

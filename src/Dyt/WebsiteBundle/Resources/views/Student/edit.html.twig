@@ -14,55 +14,21 @@
                 {{ form_widget(form.name, { 'attr': {'placeholder': 'name'} }) }}
 
                 <h3>Students</h3>
-                <div id="classroom_students" data-prototype="<div>
-                     <div id='classroom_students_$$name$$'>
-                        <div>
-                            <input type='text' class='input-medium' id='classroom_students_$$name$$_first_name' name='classroom[students][$$name$$][first_name]' required='required' maxlength='45' placeholder='last name'/>
-                            <input type='text' class='input-small' id='classroom_students_$$name$$_last_name' name='classroom[students][$$name$$][last_name]' required='required' maxlength='45' placeholder='first name'/>
-                            <select class='input-small' id='classroom_students_$$name$$_ref_level' name='classroom[students][$$name$$][ref_level]' required='required'>
-                                <option value='55'>TPS</option>
-                                <option value='56'>PS</option>
-                                <option value='57'>MS</option>
-                                <option value='58'>GS</option>
-                            </select>
-                            <input type='text' class='' id='classroom_students_$$name$$_birthday' name='classroom[students][$$name$$][birthday]' required='required' maxlength='45' placeholder='birthday'/>
-                            <input type='text' class='input-small' id='classroom_students_$$name$$_sex' name='classroom[students][$$name$$][sex]' required='required' maxlength='45' placeholder='sex'/>
-                            <a href='#' class='delete_link btn'>remove</a>
-                        </div>
-                    </div>
-                </div>">
 
-                {% for student in form.students %}
-                    <div>
-                        <div>
-                            {{ form_errors(student.last_name) }}
-                            {{ form_widget(student.last_name, { 'attr': {'placeholder': 'last name'} }) }}
-                            {{ form_errors(student.first_name) }}
-                            {{ form_widget(student.first_name, { 'attr': {'placeholder': 'first name'} }) }}
-                            {{ form_errors(student.ref_level) }}
-                            {{ form_widget(student.ref_level, { 'attr': {'placeholder': 'level'} }) }}
-                            {{ form_errors(student.birthday) }}
-                            {{ form_widget(student.birthday, { 'attr': {'placeholder': 'birthday'} }) }}
-                            {{ form_errors(student.sex) }}
-                            {{ form_widget(student.sex, { 'attr': {'placeholder': 'sex'} }) }}
-                            {#{ form_widget(student.classroom) }#}
-                            <a href='#' class='delete_link btn'>remove</a>
-                        </div>
-                    </div>
+                {% for widget in form.students.children %}
+                    {{ _self.widget_prototype(widget, 'Remove') }}
                 {% endfor %}
 
+                <div id="classroom_students" data-prototype="{{ _self.widget_prototype(form.students, 'Remove')|escape }}"></div>
                 {{ form_rest(form) }}
-
-                </div>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row form-actions">
             <div class="span12">
-                <div class="form-actions">
-                    <a href="#" class="btn jslink">Add a student</a>
-                    <button class="btn btn-primary" type="submit">Save changes</button>
-                    <button class="btn" type="reset">Cancel</button>
-                </div>
+                <a href="#" class="btn jslink">Add a student</a>
+                <button class="btn btn-primary" type="submit">Save changes</button>
+                <button class="btn" type="reset">Cancel</button>
             </div>
         </div>
 
@@ -72,3 +38,27 @@
 {% block javascripts %}
     {% include "DytWebsiteBundle:Student:js.html.twig" %}
 {% endblock %}
+
+{% macro widget_prototype(widget, remove_text) %}
+    {% if widget.get('prototype') %}
+        {% set form = widget.get('prototype') %}
+        {% set name = widget.get('prototype').get('name') %}
+    {% else %}
+        {% set form = widget %}
+        {% set name = widget.get('last_name') %}
+    {% endif %}
+
+    <div data-content="{{ name }}">
+        {{ form_errors(form.last_name) }}
+        {{ form_widget(form.last_name) }}
+        {{ form_errors(form.first_name) }}
+        {{ form_widget(form.first_name) }}
+        {{ form_errors(form.ref_level) }}
+        {{ form_widget(form.ref_level) }}
+        {{ form_errors(form.birthday) }}
+        {{ form_widget(form.birthday) }}
+        {{ form_errors(form.sex) }}
+        {{ form_widget(form.sex) }}
+        <a href='#' class='delete_link btn'>{{ remove_text }}</a>
+    </div>
+{% endmacro %}
