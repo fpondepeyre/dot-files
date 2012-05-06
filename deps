@@ -77,3 +77,7 @@
 
 [propel]
     git=https://github.com/propelorm/Propel.git
+
+[TypehintableBehavior]
+    git=http://github.com/willdurand/TypehintableBehavior.git
+    target=/propel-behaviors/TypehintableBehavior
