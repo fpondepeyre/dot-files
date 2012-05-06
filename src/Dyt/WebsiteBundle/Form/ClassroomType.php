@@ -10,7 +10,7 @@ class ClassroomType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', 'text')
             ->add('students', 'collection', array(
                 'type'         => new StudentType(),
                 'allow_add'    => true,

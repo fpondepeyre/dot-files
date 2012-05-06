@@ -140,7 +140,7 @@ class StudentController extends Controller
     {
         $classroom = ClassroomQuery::create()
             ->joinWith('Student')
-            ->findOne();
+            ->findPk(1);
 
         $form = $this->createForm(new ClassroomType(), $classroom);
 
@@ -175,9 +175,7 @@ class StudentController extends Controller
      */
     public function createAction(Request $request)
     {
-        $classroom = ClassroomQuery::create()
-            ->joinWith('Student')
-            ->findOne();
+        $classroom = new Classroom();
 
         $form = $this->createForm(new ClassroomType(), $classroom);
         $form->bindRequest($request);
