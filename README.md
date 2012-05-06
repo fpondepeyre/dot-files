@@ -27,12 +27,17 @@ And don't forget to clear your cache:
 
 Create database and tables
 
-    php app/console doctrine:schema:create
-    php app/console doctrine:schema:update --force
+    php app/console propel:database:create
+    php app/console propel:build-sql
+    php app/console propel:insert-sql
+
+Build model
+
+   php app/console propel:build-model
 
 Load fixtures
 
-    php app/console doctrine:fixtures:load
+    ./app/console propel:fixtures:load
 
 Copy phpunit.xml.dist for launch test
     
