@@ -5,7 +5,7 @@
     <table name="classroom">
         <column name="id"        type="integer" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="school_id" type="integer" required="false"/>
-        <column name="name"      type="varchar" size="255" required="true"/>
+        <column name="name"      type="varchar" size="255" required="true" primaryString="true"/>
 
         <foreign-key foreignTable="school" name="school">
             <reference local="school_id" foreign="id"/>
@@ -22,7 +22,7 @@
     <table name="ref_level">
         <column name="id"          type="integer" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="culture"     type="varchar" size="2"  required="true"/>
-        <column name="level"       type="varchar" size="45" required="true"/>
+        <column name="level"       type="varchar" size="45" required="true" primaryString="true"/>
         <column name="short_level" type="varchar" size="15" required="true"/>
 
         <behavior name="timestampable" />
@@ -32,7 +32,7 @@
     <table name="school">
         <column name="id"          type="integer" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="fos_user_id" type="integer" required="false"/>
-        <column name="name"        type="varchar" size="100" required="true"/>
+        <column name="name"        type="varchar" size="100" required="true" primaryString="true"/>
 
         <foreign-key foreignTable="fos_user" name="fos_user">
           <reference local="fos_user_id" foreign="id"/>
