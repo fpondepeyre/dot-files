@@ -23,10 +23,11 @@ class StudentType extends AbstractType
                 )
             ))
             ->add('birthday', null, array('widget' => 'single_text'))
-            ->add('sex', 'text', array(
+            ->add('sex', 'choice', array(
+                'choices' => array('0' => 'Male', '1' => 'Female'),
                 'attr' => array(
                     'placeholder' => 'sex',
-                    'class' => 'input-small'
+                    'class'       => 'input-small'
                 )
             ))
             ->add('ref_level', null, array(
