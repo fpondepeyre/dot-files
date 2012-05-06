@@ -67,16 +67,13 @@
     target=bundles/FOS/UserBundle
     version=1.2.0
 
-[doctrine-fixtures]
-    git=http://github.com/doctrine/data-fixtures.git
+[PropelBundle]
+    git=https://github.com/propelorm/PropelBundle.git
+    target=/bundles/Propel/PropelBundle
+    version=origin/1.0
 
-[DoctrineFixturesBundle]
-    git=http://github.com/symfony/DoctrineFixturesBundle.git
-    target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
+[phing]
+    git=https://github.com/phingofficial/phing.git
 
-[gedmo-doctrine-extensions]
-    git=http://github.com/l3pp4rd/DoctrineExtensions.git
-
-[DoctrineExtensionsBundle]
-    git=http://github.com/stof/StofDoctrineExtensionsBundle.git
-    target=/bundles/Stof/DoctrineExtensionsBundle
+[propel]
+    git=https://github.com/propelorm/Propel.git

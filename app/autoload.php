@@ -19,11 +19,13 @@ $loader->registerNamespaces(array(
     'Doctrine\\Common'               => __DIR__.'/../vendor/doctrine-common/lib',
     'Stof'                           => __DIR__.'/../vendor/bundles',
     'Gedmo'                          => __DIR__.'/../vendor/gedmo-doctrine-extensions/lib',
+    'Propel'                         => __DIR__.'/../vendor/bundles',
 
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
     'Twig_'            => __DIR__.'/../vendor/twig/lib',
+    'Phing'            => __DIR__.'/../vendor/phing/classes/phing',
 ));
 
 // intl

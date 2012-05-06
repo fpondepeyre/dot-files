@@ -7,6 +7,8 @@ vendor/*
 */cache/*
 web/uploads/*
 web/bundles/*
+src/Dyt/WebsiteBundle/Model/om/*
+src/Dyt/WebsiteBundle/Model/map/*
 
 # Configuration files
 app/config/parameters.ini
