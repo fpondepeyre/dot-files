@@ -3,14 +3,20 @@
 namespace Dyt\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
 use Symfony\Component\HttpFoundation\Request;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Dyt\WebsiteBundle\Entity\Student;
+
 use Dyt\WebsiteBundle\Form\StudentType;
-use Dyt\WebsiteBundle\Entity\Classroom;
 use Dyt\WebsiteBundle\Form\ClassroomType;
+
+use Dyt\WebsiteBundle\Model\StudentQuery;
+use Dyt\WebsiteBundle\Model\Student;
+use Dyt\WebsiteBundle\Model\ClassroomQuery;
+use Dyt\WebsiteBundle\Model\Classroom;
 
 /**
  * Student controller.
@@ -27,10 +33,7 @@ class StudentController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entities = $em->getRepository('DytWebsiteBundle:Student')->findAll();
-
+        $entities = StudentQuery::create()->find();
         return array('entities' => $entities);
     }
 
@@ -42,9 +45,7 @@ class StudentController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('DytWebsiteBundle:Student')->find($id);
+        $entity = StudentQuery::create()->findPk($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Student entity.');
@@ -67,9 +68,7 @@ class StudentController extends Controller
      */
     public function updateAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('DytWebsiteBundle:Student')->find($id);
+        $entity = StudentQuery::create()->findPk($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Student entity.');
@@ -111,14 +110,13 @@ class StudentController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('DytWebsiteBundle:Student')->find($id);
+            $entity = StudentQuery::create()->findPk($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Student entity.');
             }
 
-            $em->remove($entity);
-            $em->flush();
+            $em->delete();
         }
 
         return $this->redirect($this->generateUrl('student'));
@@ -140,13 +138,9 @@ class StudentController extends Controller
      */
     public function editAction(Request $request)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $students = $em->getRepository('DytWebsiteBundle:Student')->findAll();
-
-        $classroom = new Classroom();
-        foreach($students as $student) {
-            $classroom->addStudents($student);
-        }
+        $classroom = ClassroomQuery::create()
+            ->joinWith('Student')
+            ->findOne();
 
         $form = $this->createForm(new ClassroomType(), $classroom);
 
@@ -164,8 +158,6 @@ class StudentController extends Controller
     public function newAction(Request $request)
     {
         $classroom = new Classroom();
-        $student = new Student();
-        $classroom->addStudents($student);
 
         $form = $this->createForm(new ClassroomType(), $classroom);
 
@@ -183,27 +175,15 @@ class StudentController extends Controller
      */
     public function createAction(Request $request)
     {
-        $classroom = new Classroom();
-        $classrooms = $request->request->get('classroom', array());
-        if (isset($classrooms['students'])) {
-            $students = $classrooms['students'];
-            foreach($students as $student) {
-                $student = new Student();
-                $classroom->addStudents($student);
-            }
-        }
+        $classroom = ClassroomQuery::create()
+            ->joinWith('Student')
+            ->findOne();
 
         $form = $this->createForm(new ClassroomType(), $classroom);
         $form->bindRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($classroom);
-            foreach($classroom->getStudents() as $student) {
-                $em->persist($student);
-            }
-            $em->flush();
-
+            $classroom->save();
             $this->get('session')->setFlash('notice', 'Your changes were saved!');
             return $this->redirect($this->generateUrl('student', array()));
         }

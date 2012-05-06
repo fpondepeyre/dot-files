@@ -18,7 +18,7 @@ class SchoolType extends AbstractType
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'Dyt\WebsiteBundle\Entity\School',
+            'data_class' => 'Dyt\WebsiteBundle\Model\School',
         );
     }
 
