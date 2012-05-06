@@ -7,6 +7,9 @@ vendor/*
 */cache/*
 web/uploads/*
 web/bundles/*
+
+# Propel
+app/propel/*
 src/Dyt/WebsiteBundle/Model/om/*
 src/Dyt/WebsiteBundle/Model/map/*
 
