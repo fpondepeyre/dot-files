@@ -1,0 +1,117 @@
+Dyt\WebsiteBundle\Model\Classroom:
+  Classroom_1:
+    name: 'My classroom'
+  Classroom_2:
+    name: 'My classroom'
+
+Dyt\WebsiteBundle\Model\RefLevel:
+  RefLevel_1:
+    culture: fr
+    level: Toute petite section
+    short_level: TPS
+  RefLevel_2:
+    culture: fr
+    level: Petite section
+    short_level: PS
+  RefLevel_3:
+    culture: fr
+    level: Moyenne section
+    short_level: MS
+  RefLevel_4:
+    culture: fr
+    level: Grande section
+    short_level: GS
+
+Dyt\WebsiteBundle\Model\Student:
+  Student_1:
+    classroom_id: Classroom_1
+    ref_level_id: RefLevel_1
+    first_name: Tristan
+    last_name: RANA-COEUGNET
+    birthday: '2008-01-06'
+    sex: '1'
+  Student_2:
+    classroom_id: Classroom_1
+    ref_level_id: RefLevel_1
+    first_name: Anaé
+    last_name: REIGNIER
+    birthday: '2008-02-09'
+    sex: '1'
+  Student_3:
+    classroom_id: Classroom_1
+    ref_level_id: RefLevel_1
+    first_name: Louise
+    last_name: SEVRE
+    birthday: '2007-12-21'
+    sex: '1'
+  Student_4:
+    classroom_id: Classroom_1
+    ref_level_id: RefLevel_1
+    first_name: Henri
+    last_name: JACQUEAU
+    birthday: '2007-04-01'
+    sex: '1'
+  Student_5:
+    classroom_id: Classroom_1
+    ref_level_id: RefLevel_1
+    first_name: Raphaël
+    last_name: GALLOIS
+    birthday: '2007-09-21'
+    sex: '1'
+  Student_6:
+    classroom_id: Classroom_1
+    ref_level_id: RefLevel_1
+    first_name: Mattéo
+    last_name: LIMA DA CUNHA
+    birthday: '2007-04-19'
+    sex: '1'
+  Student_7:
+    classroom_id: Classroom_1
+    ref_level_id: RefLevel_1
+    first_name: Léna
+    last_name: DJERMANI
+    birthday: '2007-06-12'
+    sex: '0'
+  Student_8:
+    classroom_id: Classroom_1
+    ref_level_id: RefLevel_1
+    first_name: Héloïse
+    last_name: ROGER
+    birthday: '2009-01-27'
+    sex: '0'
+  Student_9:
+    classroom_id: Classroom_1
+    ref_level_id: RefLevel_1
+    first_name: Camille
+    last_name: LANCIAUX
+    birthday: '2009-01-21'
+    sex: '0'
+  Student_10:
+    classroom_id: Classroom_1
+    ref_level_id: RefLevel_1
+    first_name: Faustine
+    last_name: CHENE
+    birthday: '2008-10-23'
+    sex: '0'
+
+FOS\UserBundle\Propel\User:
+  User_1:
+    username: florian
+    email: fpondepeyre@gmail.com
+    enabled: '1'
+    password: pass4florian
+    roles: {  }
+  User_2:
+    username: laurent
+    email: laurent.chavane@gmail.com
+    enabled: '1'
+    password: pass4laurent
+    roles: {  }
+    
+Dyt\WebsiteBundle\Model\School:
+  School_1:
+    fos_user_id: User_1
+    name: 'Ecole Jean Moulin'
+  School_2:
+    fos_user_id: User_2
+    name: 'Ecole de Borest'
