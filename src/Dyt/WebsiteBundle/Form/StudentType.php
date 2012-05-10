@@ -34,11 +34,8 @@ class StudentType extends AbstractType
                 'widget' => 'single_text',
             ))
             ->add('sex', 'choice', array(
-                'choices' => array(
-                    Student::SEX_BOY  => Student::SEX_BOY_STRING,
-                    Student::SEX_GIRL => Student::SEX_GIRL_STRING
-                ),
-                'attr' => array(
+                'choices' => $this->getChoicesSex(),
+                'attr'    => array(
                     'placeholder' => 'sex',
                     'class' => 'input-small'
                 )
@@ -49,6 +46,19 @@ class StudentType extends AbstractType
                     'class'       => 'input-small'
                 )
             ));
+    }
+
+    /**
+     * List of sex
+     *
+     * @return array The sex list
+     */
+    private function getChoicesSex()
+    {
+        return array(
+            Student::SEX_BOY  => Student::SEX_BOY_STRING,
+            Student::SEX_GIRL => Student::SEX_GIRL_STRING
+        );
     }
 
     /**
