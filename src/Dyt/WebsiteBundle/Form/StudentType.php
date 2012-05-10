@@ -5,6 +5,8 @@ namespace Dyt\WebsiteBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
+use Dyt\WebsiteBundle\Model\Student;
+
 class StudentType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
@@ -24,7 +26,10 @@ class StudentType extends AbstractType
             ))
             ->add('birthday', null, array('widget' => 'single_text'))
             ->add('sex', 'choice', array(
-                'choices' => array('0' => 'Male', '1' => 'Female'),
+                'choices' => array(
+                    Student::SEX_BOY => Student::SEX_BOY_STRING,
+                    Student::SEX_GIRL => Student::SEX_GIRL_STRING
+                ),
                 'attr' => array(
                     'placeholder' => 'sex',
                     'class'       => 'input-small'
