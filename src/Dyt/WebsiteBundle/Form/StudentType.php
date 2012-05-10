@@ -83,4 +83,5 @@ class StudentType extends AbstractType
     {
         return 'student';
     }
-}
+
+} //StudentType

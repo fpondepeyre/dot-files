@@ -7,6 +7,12 @@ use Symfony\Component\Form\FormBuilder;
 
 class ClassroomType extends AbstractType
 {
+    /**
+     * Configure form
+     *
+     * @param \Symfony\Component\Form\FormBuilder $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
@@ -19,7 +25,6 @@ class ClassroomType extends AbstractType
             )
         );
     }
-
 
     /**
      * Get default options
@@ -43,4 +48,5 @@ class ClassroomType extends AbstractType
     {
         return 'classroom';
     }
-}
+
+} //ClassroomType

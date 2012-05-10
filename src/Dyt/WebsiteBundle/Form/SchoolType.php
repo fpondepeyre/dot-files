@@ -43,4 +43,5 @@ class SchoolType extends AbstractType
     {
         return 'school';
     }
-}
+
+} //SchoolType
