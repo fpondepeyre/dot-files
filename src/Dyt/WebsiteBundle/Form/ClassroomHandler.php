@@ -24,7 +24,7 @@ class ClassroomHandler
      */
     public function __construct(Form $form, Request $request)
     {
-        $this->form    = $form;
+        $this->form = $form;
         $this->request = $request;
     }
 
@@ -35,9 +35,9 @@ class ClassroomHandler
      */
     public function process()
     {
-        if( $this->request->getMethod() == 'POST' ) {
+        if ($this->request->getMethod() == 'POST') {
             $this->form->bindRequest($this->request);
-            if( $this->form->isValid() ) {
+            if ($this->form->isValid()) {
                 $this->onSuccess($this->form->getData());
                 return true;
             }

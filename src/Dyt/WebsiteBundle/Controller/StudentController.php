@@ -12,7 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Dyt\WebsiteBundle\Form\ClassroomType;
 
-use Dyt\WebsiteBundle\Model\StudentQuery;
 use Dyt\WebsiteBundle\Model\ClassroomQuery;
 use Dyt\WebsiteBundle\Model\Classroom;
 
@@ -68,7 +67,7 @@ class StudentController extends Controller
         $classroom = ClassroomQuery::create()->findPk($id);
         $form = $this->createForm(new ClassroomType(), $classroom);
         $formHandler = new ClassroomHandler($form, $request);
-        if($formHandler->process()) {
+        if ($formHandler->process()) {
             return $this->redirect($this->generateUrl('classroom', array()));
         }
         return array(
@@ -88,7 +87,7 @@ class StudentController extends Controller
         $classroom = new Classroom();
         $form = $this->createForm(new ClassroomType(), $classroom);
         $formHandler = new ClassroomHandler($form, $request);
-        if($formHandler->process()) {
+        if ($formHandler->process()) {
             return $this->redirect($this->generateUrl('classroom', array()));
         }
         return array(

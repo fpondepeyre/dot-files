@@ -9,12 +9,18 @@ use Dyt\WebsiteBundle\Model\Student;
 
 class StudentType extends AbstractType
 {
+    /**
+     * Configure form
+     *
+     * @param \Symfony\Component\Form\FormBuilder $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
             ->add('first_name', 'text', array(
                 'attr' => array(
-                    'placeholder' => "first name",
+                    'placeholder' => 'first name',
                     'class'       => 'input-small'
                 )
             ))
@@ -24,15 +30,17 @@ class StudentType extends AbstractType
                     'class'       => 'input-medium'
                 )
             ))
-            ->add('birthday', null, array('widget' => 'single_text'))
+            ->add('birthday', null, array(
+                'widget' => 'single_text',
+            ))
             ->add('sex', 'choice', array(
                 'choices' => array(
-                    Student::SEX_BOY => Student::SEX_BOY_STRING,
+                    Student::SEX_BOY  => Student::SEX_BOY_STRING,
                     Student::SEX_GIRL => Student::SEX_GIRL_STRING
                 ),
                 'attr' => array(
                     'placeholder' => 'sex',
-                    'class'       => 'input-small'
+                    'class' => 'input-small'
                 )
             ))
             ->add('ref_level', null, array(
@@ -43,6 +51,12 @@ class StudentType extends AbstractType
             ));
     }
 
+    /**
+     * Get default options
+     *
+     * @param array $options
+     * @return array
+     */
     public function getDefaultOptions(array $options)
     {
         return array(
@@ -50,6 +64,11 @@ class StudentType extends AbstractType
         );
     }
 
+    /**
+     * Get the form name
+     *
+     * @return string The form name
+     */
     public function getName()
     {
         return 'student';

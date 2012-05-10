@@ -20,6 +20,13 @@ class ClassroomType extends AbstractType
         );
     }
 
+
+    /**
+     * Get default options
+     *
+     * @param array $options
+     * @return array
+     */
     public function getDefaultOptions(array $options)
     {
         return array(
@@ -27,6 +34,11 @@ class ClassroomType extends AbstractType
         );
     }
 
+    /**
+     * Get the form name
+     *
+     * @return string The form name
+     */
     public function getName()
     {
         return 'classroom';

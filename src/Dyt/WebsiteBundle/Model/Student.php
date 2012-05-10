@@ -22,7 +22,7 @@ class Student extends BaseStudent
      *
      * @const SEX_BOY
      */
-    const SEX_BOY =  0;
+    const SEX_BOY = 0;
 
     /**
      *
@@ -48,7 +48,7 @@ class Student extends BaseStudent
      */
     public function getSexString()
     {
-        switch($this->getSex()) {
+        switch ($this->getSex()) {
             case self::SEX_BOY:
                 $sexString = self::SEX_BOY_STRING;
                 break;
