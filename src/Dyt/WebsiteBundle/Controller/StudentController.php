@@ -21,17 +21,17 @@ use Dyt\WebsiteBundle\Form\ClassroomHandler;
 /**
  * Student controller.
  *
- * @Route("/student")
+ * @Route("/classroom")
  */
 class StudentController extends Controller
 {
     /**
-     * Lists students of a classroom.
+     * List all classrooms
      *
-     * @Route("/classroom", name="classroom")
+     * @Route("/", name="classroom_list")
      * @Template()
      */
-    public function classroomAction()
+    public function listAction()
     {
         $classrooms = ClassroomQuery::create()->find();
         return array(
@@ -42,10 +42,10 @@ class StudentController extends Controller
     /**
      * Lists students of a classroom.
      *
-     * @Route("/{id}/classroom", name="student")
+     * @Route("/{id}/show", name="classroom_show")
      * @Template()
      */
-    public function indexAction($id)
+    public function showAction($id)
     {
         $classroom = ClassroomQuery::create()
             ->joinWith('Student')
@@ -59,7 +59,7 @@ class StudentController extends Controller
     /**
      * Displays a form to edit an existing classroom.
      *
-     * @Route("/{id}/edit", name="student_edit")
+     * @Route("/{id}/edit", name="classroom_edit")
      * @Template()
      */
     public function editAction(Request $request, $id)
@@ -68,7 +68,7 @@ class StudentController extends Controller
         $form = $this->createForm(new ClassroomType(), $classroom);
         $formHandler = new ClassroomHandler($form, $request);
         if ($formHandler->process()) {
-            return $this->redirect($this->generateUrl('classroom', array()));
+            return $this->redirect($this->generateUrl('classroom_show', array('id' => $id)));
         }
         return array(
             'classroom' => $classroom,
@@ -79,7 +79,7 @@ class StudentController extends Controller
     /**
      * Displays a form to create a new classroom.
      *
-     * @Route("/new", name="student_new")
+     * @Route("/new", name="classroom_new")
      * @Template()
      */
     public function newAction(Request $request)
@@ -88,7 +88,7 @@ class StudentController extends Controller
         $form = $this->createForm(new ClassroomType(), $classroom);
         $formHandler = new ClassroomHandler($form, $request);
         if ($formHandler->process()) {
-            return $this->redirect($this->generateUrl('classroom', array()));
+            return $this->redirect($this->generateUrl('classroom_show', array('id' => $classroom->getId())));
         }
         return array(
             'form' => $form->createView()
