@@ -5,7 +5,7 @@
     <h2>Student <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
     <hr/>
 
-    <form class="form-horizontal form-search" action="{{ path('classroom_edit', {'id' : classroom.id }) }}" method="post" {{ form_enctype(form) }}>
+    <form class="form-horizontal form-search" action="{{ path('classroom_new') }}" method="post" {{ form_enctype(form) }}>
 
         <div class="row">
             <div class="span12">
@@ -36,7 +36,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% include "DytWebsiteBundle:Student:js.html.twig" %}
+    {% include "DytWebsiteBundle:Classroom:js.html.twig" %}
 {% endblock %}
 
 {% macro widget_prototype(widget, remove_text) %}

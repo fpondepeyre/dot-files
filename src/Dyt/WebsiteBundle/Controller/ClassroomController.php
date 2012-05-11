@@ -19,11 +19,11 @@ use Dyt\WebsiteBundle\Form\ClassroomHandler;
 
 
 /**
- * Student controller.
+ * Classroom controller.
  *
  * @Route("/classroom")
  */
-class StudentController extends Controller
+class ClassroomController extends Controller
 {
     /**
      * List all classrooms
