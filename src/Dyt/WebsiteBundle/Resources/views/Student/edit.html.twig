@@ -26,8 +26,8 @@
 
         <div class="row form-actions">
             <div class="span12">
-                <a href="#" class="btn jslink">Add a student</a>
-                <button class="btn btn-primary" type="submit">Save changes</button>
+                <a href="#" class="btn jslink"><i class="icon-plus icon-black"></i>Add a student</a>
+                <button class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i>Save changes</button>
                 <button class="btn" type="reset">Cancel</button>
             </div>
         </div>
@@ -59,6 +59,6 @@
         {{ form_widget(form.birthday) }}
         {{ form_errors(form.sex) }}
         {{ form_widget(form.sex) }}
-        <a href='#' class='delete_link btn'>{{ remove_text }}</a>
+        <a href='#' class='delete_link btn btn-danger'><i class="icon-remove icon-white"></i>{{ remove_text }}</a>
     </div>
 {% endmacro %}
