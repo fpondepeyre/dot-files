@@ -7,6 +7,7 @@
                 <span class="icon-bar"></span>
             </a>
             <a class="brand" href="#">Project name</a>
+
             <div class="nav-collapse">
                 <ul class="nav">
                     <li class="active"><a href="#">Home</a></li>
@@ -28,7 +29,7 @@
                                 <li class="divider"></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
                             </ul>
-                       </li>
+                        </li>
                     {% else %}
                         <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
                         <li class="divider-vertical"></li>
