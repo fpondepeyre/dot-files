@@ -94,3 +94,9 @@ propel:
     # to manage your dependencies
     path:       "%kernel.root_dir%/../vendor/propel"
     phing_path: "%kernel.root_dir%/../vendor/phing"
+
+mopa_bootstrap:
+    form:
+        show_legend: true # default is true
+        show_child_legend: true # default is true
+        error_type: inline # or inline which is default
