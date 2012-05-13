@@ -81,3 +81,13 @@
 [TypehintableBehavior]
     git=http://github.com/willdurand/TypehintableBehavior.git
     target=/propel-behaviors/TypehintableBehavior
+
+[MopaBootstrapBundle]
+    git = "http://github.com/phiamo/MopaBootstrapBundle.git"
+    target = "/bundles/Mopa/BootstrapBundle"
+    version=origin/v2.x_sf2.0
+
+[twittersbootstrap]
+    git = "git://github.com/twitter/bootstrap.git"
+    target = "/bundles/Mopa/BootstrapBundle/Resources/bootstrap"
+    version = v2.0.3
