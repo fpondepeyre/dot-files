@@ -97,6 +97,6 @@ propel:
 
 mopa_bootstrap:
     form:
-        show_legend: true # default is true
+        show_legend: false # default is true
         show_child_legend: true # default is true
         error_type: inline # or inline which is default
