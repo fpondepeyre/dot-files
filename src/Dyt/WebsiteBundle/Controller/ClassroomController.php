@@ -38,7 +38,7 @@ class ClassroomController extends Controller
     /**
      * Lists students of a classroom.
      *
-     * @Route("/{id}/show", name="classroom_show")
+     * @Route("/{id}/show", name="classroom_show", requirements={"id" = "\d+"})
      * @Template()
      *
      * @param int $id
@@ -62,7 +62,7 @@ class ClassroomController extends Controller
     /**
      * Display a form to edit an existing classroom.
      *
-     * @Route("/{id}/edit", name="classroom_edit")
+     * @Route("/{id}/edit", name="classroom_edit", requirements={"id" = "\d+"})
      * @Template()
      *
      * @param \Symfony\Component\HttpFoundation\Request $request
@@ -111,7 +111,7 @@ class ClassroomController extends Controller
     /**
      * Remove classroom.
      *
-     * @Route("/{id}/delete", name="classroom_delete")
+     * @Route("/{id}/delete", name="classroom_delete", requirements={"id" = "\d+"})
      * @Template()
      *
      * @param \Symfony\Component\HttpFoundation\Request $request
