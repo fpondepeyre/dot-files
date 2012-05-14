@@ -1,3 +1,4 @@
+{% import "DytWebsiteBundle::macros.html.twig" as macros %}
 {% extends '::base.html.twig' %}
 
 {% block body %}
@@ -16,10 +17,10 @@
                 <h3>Students</h3>
 
                 {% for widget in form.students.children %}
-                    {{ _self.widget_prototype(widget, 'Remove') }}
+                    {{ macros.widget_prototype(widget, 'Remove') }}
                 {% endfor %}
 
-                <div id="classroom_students" data-prototype="{{ _self.widget_prototype(form.students, 'Remove')|escape }}"></div>
+                <div id="classroom_students" data-prototype="{{ macros.widget_prototype(form.students, 'Remove')|escape }}"></div>
                 {{ form_rest(form) }}
             </div>
         </div>
@@ -39,27 +40,3 @@
 {% block inline_javascripts %}
     {% include "DytWebsiteBundle:Classroom:js.html.twig" %}
 {% endblock %}
-
-{% macro widget_prototype(widget, remove_text) %}
-    {% if widget.get('prototype') %}
-        {% set form = widget.get('prototype') %}
-        {% set name = widget.get('prototype').get('name') %}
-    {% else %}
-        {% set form = widget %}
-        {% set name = widget.get('last_name') %}
-    {% endif %}
-
-    <div data-content="{{ name }}">
-        {{ form_errors(form.last_name) }}
-        {{ form_widget(form.last_name) }}
-        {{ form_errors(form.first_name) }}
-        {{ form_widget(form.first_name) }}
-        {{ form_errors(form.ref_level) }}
-        {{ form_widget(form.ref_level) }}
-        {{ form_errors(form.birthday) }}
-        {{ form_widget(form.birthday) }}
-        {{ form_errors(form.sex) }}
-        {{ form_widget(form.sex) }}
-        <a href='#' class='delete_link btn btn-danger'><i class="icon-remove icon-white"></i>{{ remove_text }}</a>
-    </div>
-{% endmacro %}
