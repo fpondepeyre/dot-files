@@ -101,5 +101,21 @@ class ClassroomController extends Controller
         );
     }
 
+    /**
+     * Remove classroom.
+     *
+     * @Route("/{id}/delete", name="classroom_delete")
+     * @Template()
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param int $id The classroom id
+     */
+    public function deleteAction($id)
+    {
+        $classroom = ClassroomQuery::create()->findPk($id);
+        $classroom->delete();
+        return $this->redirect($this->generateUrl('classroom_list'));
+    }
+
 } //ClassroomController
 
