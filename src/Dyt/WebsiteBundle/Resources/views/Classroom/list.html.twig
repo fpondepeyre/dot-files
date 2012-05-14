@@ -28,7 +28,6 @@
                 <th>{{ 'Name'|trans }}</th>
                 <th>{{ 'Created at'|trans }}</th>
                 <th>{{ 'Actions'|trans }}</th>
-
             </tr>
             </thead>
             <tbody>
@@ -41,6 +40,7 @@
                 <td>
                     <a href="{{ path('classroom_edit', {'id' : classroom.id}) }}" class="btn btn-mini btn-primary small"><i class="icon-edit icon-white"></i>&nbsp;Edit</a>
                     <a href="{{ path('classroom_show', {'id' : classroom.id}) }}" class="btn btn-mini btn-primary small"><i class="icon-check icon-white"></i>&nbsp;Show</a>
+                    <a href="{{ path('classroom_delete', {'id' : classroom.id}) }}" class="btn btn-mini btn-danger small"><i class="icon-trash icon-white"></i>&nbsp;Delete</a>
                 </td>
             </tr>
             {% endfor %}

@@ -38,7 +38,7 @@ class ClassroomController extends Controller
     /**
      * Lists students of a classroom.
      *
-     * @Route("/{id}/show", name="classroom_show")
+     * @Route("/{id}/show", name="classroom_show", requirements={"id" = "\d+"})
      * @Template()
      *
      * @param int $id
@@ -50,6 +50,10 @@ class ClassroomController extends Controller
             ->joinWith('Student')
             ->findPk($id);
 
+        if (!$classroom) {
+            throw $this->createNotFoundException(sprintf('The classroom (id: "%d") does not exist!', $id));
+        }
+
         return array(
             'classroom' => $classroom
         );
@@ -58,7 +62,7 @@ class ClassroomController extends Controller
     /**
      * Display a form to edit an existing classroom.
      *
-     * @Route("/{id}/edit", name="classroom_edit")
+     * @Route("/{id}/edit", name="classroom_edit", requirements={"id" = "\d+"})
      * @Template()
      *
      * @param \Symfony\Component\HttpFoundation\Request $request
@@ -68,6 +72,9 @@ class ClassroomController extends Controller
     public function editAction(Request $request, $id)
     {
         $classroom = ClassroomQuery::create()->findPk($id);
+        if (!$classroom) {
+            throw $this->createNotFoundException(sprintf('The classroom (id: "%d") does not exist!', $id));
+        }
         $form = $this->createForm(new ClassroomType(), $classroom);
         $formHandler = new ClassroomHandler($form, $request);
         if ($formHandler->process()) {
@@ -99,6 +106,26 @@ class ClassroomController extends Controller
         return array(
             'form' => $form->createView()
         );
+    }
+
+    /**
+     * Remove classroom.
+     *
+     * @Route("/{id}/delete", name="classroom_delete", requirements={"id" = "\d+"})
+     * @Template()
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param int $id The classroom id
+     */
+    public function deleteAction($id)
+    {
+        $classroom = ClassroomQuery::create()->findPk($id);
+        if (!$classroom) {
+            throw $this->createNotFoundException(sprintf('The classroom (id: "%d") does not exist!', $id));
+        }
+        $classroom->delete();
+        $this->get('session')->setFlash('notice', sprintf('The classroom "%s" was deleted!', $classroom->getName()));
+        return $this->redirect($this->generateUrl('classroom_list'));
     }
 
 } //ClassroomController
