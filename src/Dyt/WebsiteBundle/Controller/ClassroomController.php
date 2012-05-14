@@ -114,6 +114,7 @@ class ClassroomController extends Controller
     {
         $classroom = ClassroomQuery::create()->findPk($id);
         $classroom->delete();
+        $this->get('session')->setFlash('notice', sprintf('The classroom "%s" was deleted!', $classroom->getName()));
         return $this->redirect($this->generateUrl('classroom_list'));
     }
 
