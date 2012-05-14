@@ -50,6 +50,10 @@ class ClassroomController extends Controller
             ->joinWith('Student')
             ->findPk($id);
 
+        if (!$classroom) {
+            throw $this->createNotFoundException(sprintf('The classroom (id: "%d") does not exist!', $id));
+        }
+
         return array(
             'classroom' => $classroom
         );
@@ -68,6 +72,9 @@ class ClassroomController extends Controller
     public function editAction(Request $request, $id)
     {
         $classroom = ClassroomQuery::create()->findPk($id);
+        if (!$classroom) {
+            throw $this->createNotFoundException(sprintf('The classroom (id: "%d") does not exist!', $id));
+        }
         $form = $this->createForm(new ClassroomType(), $classroom);
         $formHandler = new ClassroomHandler($form, $request);
         if ($formHandler->process()) {
@@ -113,6 +120,9 @@ class ClassroomController extends Controller
     public function deleteAction($id)
     {
         $classroom = ClassroomQuery::create()->findPk($id);
+        if (!$classroom) {
+            throw $this->createNotFoundException(sprintf('The classroom (id: "%d") does not exist!', $id));
+        }
         $classroom->delete();
         $this->get('session')->setFlash('notice', sprintf('The classroom "%s" was deleted!', $classroom->getName()));
         return $this->redirect($this->generateUrl('classroom_list'));
