@@ -19,3 +19,6 @@ app/phpunit.xml
 
 #netbeans
 nbproject
+
+#phpStorm
+.idea

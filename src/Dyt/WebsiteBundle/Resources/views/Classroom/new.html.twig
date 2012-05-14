@@ -5,7 +5,7 @@
     <h2>Student <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
     <hr/>
 
-    <form class="form-horizontal form-search" action="{{ path('student_update', {'id' : classroom.id }) }}" method="post" {{ form_enctype(form) }}>
+    <form class="form-horizontal form-search" action="{{ path('classroom_new') }}" method="post" {{ form_enctype(form) }}>
 
         <div class="row">
             <div class="span12">
@@ -24,11 +24,12 @@
             </div>
         </div>
 
-        <div class="row form-actions">
+        <div class="form-actions">
             <div class="span12">
-                <a href="#" class="btn jslink">Add a student</a>
-                <button class="btn btn-primary" type="submit">Save changes</button>
+                <a href="#" class="btn jslink"><i class="icon-plus icon-black"></i>Add a student</a>
+                <button class="btn btn-primary" type="submit"><i class="icon-ok icon-white"></i>Save changes</button>
                 <button class="btn" type="reset">Cancel</button>
+                <a href="{{ path('classroom_list') }}" class="btn"><i class="icon-list icon-black"></i></i>&nbsp;List</a>
             </div>
         </div>
 
@@ -36,7 +37,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% include "DytWebsiteBundle:Student:js.html.twig" %}
+    {% include "DytWebsiteBundle:Classroom:js.html.twig" %}
 {% endblock %}
 
 {% macro widget_prototype(widget, remove_text) %}
@@ -59,6 +60,6 @@
         {{ form_widget(form.birthday) }}
         {{ form_errors(form.sex) }}
         {{ form_widget(form.sex) }}
-        <a href='#' class='delete_link btn'>{{ remove_text }}</a>
+        <a href='#' class='delete_link btn btn-danger'><i class="icon-remove icon-white"></i>{{ remove_text }}</a>
     </div>
 {% endmacro %}
