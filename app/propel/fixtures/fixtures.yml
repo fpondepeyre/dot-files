@@ -97,15 +97,19 @@ Dyt\WebsiteBundle\Model\Student:
 FOS\UserBundle\Propel\User:
   User_1:
     username: florian
+    username_canonical: florian
     email: fpondepeyre@gmail.com
+    email_canonical : fpondepeyre@gmail.com
+    salt: e8b7zppq874084cog8ckoccscs88cwo
     enabled: '1'
-    password: pass4florian
     roles: {  }
   User_2:
     username: laurent
+    username_canonical: laurent
     email: laurent.chavane@gmail.com
+    email_canonical : laurent.chavane@gmail.com
+    salt: e8b7zppq874084cog8ckoccscs88cwo
     enabled: '1'
-    password: pass4laurent
     roles: {  }
     
 Dyt\WebsiteBundle\Model\School:
