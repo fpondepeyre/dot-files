@@ -101,6 +101,8 @@ FOS\UserBundle\Propel\User:
     email: fpondepeyre@gmail.com
     email_canonical : fpondepeyre@gmail.com
     salt: e8b7zppq874084cog8ckoccscs88cwo
+    confirmation_token: 3fjdx8xpsomcs4o4o4cww0oc8gks08k44k8wccoscgw8g4soww
+    credentials_expired: 0
     enabled: '1'
     roles: {  }
   User_2:
@@ -109,6 +111,8 @@ FOS\UserBundle\Propel\User:
     email: laurent.chavane@gmail.com
     email_canonical : laurent.chavane@gmail.com
     salt: e8b7zppq874084cog8ckoccscs88cwo
+    confirmation_token: 3fjdx8xpsomcs4o4o4cww0oc8gks08k44k8wccoscgw8g4sozz
+    credentials_expired: 0
     enabled: '1'
     roles: {  }
     
