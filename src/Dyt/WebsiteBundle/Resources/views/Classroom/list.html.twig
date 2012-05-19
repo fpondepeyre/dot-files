@@ -35,6 +35,7 @@
             <tr>
                 <td>
                     <a href="{{ path('classroom_show', {'id' : classroom.id }) }}">{{ classroom.name }}</a>
+                    <span class="label label-info">{{ classroom.getNbStudent }} students</span>
                 </td>
                 <td>{{ classroom.createdAt('Y-m-d')|date("F jS \\a\\t g:ia") }}</td>
                 <td>

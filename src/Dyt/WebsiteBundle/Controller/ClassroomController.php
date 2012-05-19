@@ -29,7 +29,12 @@ class ClassroomController extends Controller
      */
     public function listAction()
     {
-        $classrooms = ClassroomQuery::create()->find();
+        $classrooms = ClassroomQuery::create()
+            ->joinWith('Student')
+            ->withColumn('count(Student.Id)', 'nbStudent')
+            ->groupBy('Student.ClassroomId')
+            ->find();
+
         return array(
             'classrooms' => $classrooms
         );
