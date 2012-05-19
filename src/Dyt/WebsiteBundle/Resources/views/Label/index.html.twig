@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+{% form_theme form 'MopaBootstrapBundle:Form:fields.html.twig' %}
+
+{% block body %}
+
+<h2>Label <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
+<hr/>
+
+<div class="row-fluid">
+
+    <div class="span4">
+        <form class="form-horizontal form-search" action="{{ path('label') }}" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+            <div class="form-actions">
+                <input type="submit" class="btn btn-primary" name="ok">
+            </div>
+        </form>
+    </div>
+
+    <div class="span8">
+        <div class="span12 well">
+            <div style="border: 1px dotted black;" class="span4 well" id="zone1">
+                {{ data.zone1 }}
+            </div>
+            <div style="border: 1px dotted black;" class="span4 well" id="zone2">
+                {{ data.zone2 }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
