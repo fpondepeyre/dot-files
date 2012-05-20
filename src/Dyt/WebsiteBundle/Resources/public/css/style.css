@@ -4,7 +4,24 @@
    Author:
    ========================================================================== */
 
+/* label */
+.zone {
+    text-align: center;
+    border: 3px dotted black;
+    background-color: #ffffff;
+    height: 30px;
+    position: relative;
+    padding-top:30px;
+}
 
+.edit {
+    background-color: #F5F5F5;
+    width:80px;
+    position: absolute;
+    top:0px;
+    left:0px;
+    font-weight: bold;
+}
 
 
 

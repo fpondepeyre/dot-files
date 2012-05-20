@@ -56,7 +56,7 @@ class LabelController extends Controller
      */
     private function generateData($zones)
     {
-        $this->getChoiceZones()
+        $data = array();
         $student = StudentQuery::create()->findOne();
 
         foreach($zones as $key => $zone) {
