@@ -5,7 +5,7 @@ namespace Dyt\WebsiteBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class LabelType extends AbstractType
+class LabelSimpleType extends AbstractType
 {
     /**
      * Configure form

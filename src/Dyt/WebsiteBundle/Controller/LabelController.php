@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Dyt\WebsiteBundle\Form\LabelType;
 use Dyt\WebsiteBundle\Model\StudentQuery;
 
 
@@ -18,20 +17,24 @@ use Dyt\WebsiteBundle\Model\StudentQuery;
 class LabelController extends Controller
 {
     /**
-     * Index actio
+     * Index action
      *
      * @param \Dyt\WebsiteBundle\Controller\Request $request
-     * @todo refactor
+     * @param                                       $name
      *
-     * @Route   ("/", name="label")
+     * @todo    refactor
+     *
+     * @Route   ("/{name}/template", name="label")
      * @Template()
      *
      * @return array
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $name)
     {
         $data = array('zone1' => 'zone 1', 'zone2' => 'zone 2');
-        $form = $this->createForm(new LabelType());
+
+        $formClass = '\Dyt\WebsiteBundle\Form\Label'.ucfirst($name).'Type';
+        $form = $this->createForm(new $formClass());
 
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
@@ -42,9 +45,26 @@ class LabelController extends Controller
         }
 
         return array(
+            'name' => $name,
             'data' => $data,
             'form' => $form->createView()
         );
+    }
+
+    /**
+     * Choice action
+     *
+     * @param \Dyt\WebsiteBundle\Controller\Request $request
+     * @todo refactor
+     *
+     * @Route   ("/choices", name="choices_label")
+     * @Template()
+     *
+     * @return array
+     */
+    public function choicesAction(Request $request)
+    {
+        return array();
     }
 
     /**
