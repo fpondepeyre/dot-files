@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Dyt\WebsiteBundle\Model\StudentQuery;
+use Dyt\WebsiteBundle\Form\Service\LabelTypeFactory;
 
 
 /**
@@ -33,8 +34,8 @@ class LabelController extends Controller
     {
         $data = array('zone1' => 'zone 1', 'zone2' => 'zone 2');
 
-        $formClass = '\Dyt\WebsiteBundle\Form\Label'.ucfirst($name).'Type';
-        $form = $this->createForm(new $formClass());
+        $formClass = LabelTypeFactory::getLabelType($name);
+        $form = $this->createForm($formClass);
 
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
