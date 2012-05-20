@@ -1,6 +1,8 @@
 <?php
 
 namespace Dyt\WebsiteBundle\Form\Service;
+use Dyt\WebsiteBundle\Form\LabelSimpleType;
+use Dyt\WebsiteBundle\Form\LabelFullType;
 
 /**
  * LabelTypeFactory class
@@ -10,33 +12,35 @@ class LabelTypeFactory
 {
     /**
      * __construct method
+     *
      */
-    public function __construct() {
+    public function __construct()
+    {
 
     }
 
     /**
-     * Create label associate to a template
+     * Create label type form associate to the template
+     *
+     * @param string $template The template name
      *
      * @static
-     * @param string $template The template name
+     * @throws \Exception
      * @return \Dyt\WebsiteBundle\Form\LabelFullType|\Dyt\WebsiteBundle\Form\LabelSimpleType
-     * @throws Exception
      */
     public static function getLabelType($template)
     {
         switch($template) {
             case 'simple':
-                return new \Dyt\WebsiteBundle\Form\LabelSimpleType;
+                return new LabelSimpleType();
                 break;
             case 'full':
-                return new \Dyt\WebsiteBundle\Form\LabelFullType;
+                return new LabelFullType();
                 break;
             default:
-                throw new Exception('Unable to create the LabelType');
+                throw new \Exception(sprintf('Unable to create LabelType with the template name "%s"', $template));
         }
     }
-
 
 } //LabelTypeFactory
 

@@ -3,7 +3,7 @@
         <div class="span4">
             <div class="zone">
                 <div class="edit">zone 1</div>
-                {{ data.zone1 }}
+                {{ data.zone1|raw }}
             </div>
         </div>
         <div class="span4">
@@ -14,6 +14,7 @@
         <div class="span4">
             <div class="zone">
                 <div class="edit">zone 3</div>
+                {{ data.zone3|raw }}
             </div>
         </div>
     </div>
@@ -28,7 +29,7 @@
         <div class="span4">
             <div class="zone">
                 <div class="edit">zone 5</div>
-                {{ data.zone2 }}
+                {{ data.zone5|raw }}
             </div>
         </div>
         <div class="span4">

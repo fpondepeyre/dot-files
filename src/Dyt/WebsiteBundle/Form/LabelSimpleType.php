@@ -5,13 +5,22 @@ namespace Dyt\WebsiteBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
+use Dyt\WebsiteBundle\Lib\LabelElement\FirstInitialElement;
+use Dyt\WebsiteBundle\Lib\LabelElement\FirstNameElement;
+use Dyt\WebsiteBundle\Lib\LabelElement\LastInitialElement;
+use Dyt\WebsiteBundle\Lib\LabelElement\LastNameElement;
+
+/**
+ * Form to edit simple label
+ *
+ */
 class LabelSimpleType extends AbstractType
 {
     /**
      * Configure form
      *
-     * @param \Symfony\Component\Form\FormBuilder $builder
-     * @param array $options
+     * @param \Symfony\Component\Form\FormBuilder $builder The form builder
+     * @param array                               $options The form options
      */
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -24,11 +33,19 @@ class LabelSimpleType extends AbstractType
             ));
     }
 
+    /**
+     * Get the zone choices
+     *
+     * @return array The zone choices
+     *
+     */
     private function getChoiceZones()
     {
         return array(
-            'name'    => 'student name',
-            'initial' => 'initial name'
+            FirstInitialElement::KEY => FirstInitialElement::NAME,
+            FirstNameElement::KEY    => FirstNameElement::NAME,
+            LastInitialElement::KEY  => LastInitialElement::NAME,
+            LastNameElement::KEY     => LastNameElement::NAME
         );
     }
 

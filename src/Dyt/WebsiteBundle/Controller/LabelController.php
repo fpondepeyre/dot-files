@@ -9,6 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Dyt\WebsiteBundle\Model\StudentQuery;
 use Dyt\WebsiteBundle\Form\Service\LabelTypeFactory;
 
+use Dyt\WebsiteBundle\Model\ClassroomQuery;
+
+use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementFactory;
+use Dyt\WebsiteBundle\Model\Classroom;
 
 /**
  * Label controller.
@@ -18,12 +22,10 @@ use Dyt\WebsiteBundle\Form\Service\LabelTypeFactory;
 class LabelController extends Controller
 {
     /**
-     * Index action
+     * Label editor
      *
      * @param \Dyt\WebsiteBundle\Controller\Request $request
-     * @param                                       $name
-     *
-     * @todo    refactor
+     * @param string                                $name
      *
      * @Route   ("/{name}/template", name="label")
      * @Template()
@@ -32,16 +34,23 @@ class LabelController extends Controller
      */
     public function indexAction(Request $request, $name)
     {
-        $data = array('zone1' => 'zone 1', 'zone2' => 'zone 2');
+        $classroom = ClassroomQuery::create()->findOne();
+
+        // @todo refactor it
+        $data = array(
+            'zone1' => 'zone 1',
+            'zone2' => 'zone 2',
+            'zone3' => 'zone 3',
+            'zone5' => 'zone 5'
+        );
 
         $formClass = LabelTypeFactory::getLabelType($name);
         $form = $this->createForm($formClass);
 
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
-
             if ($form->isValid()) {
-                $data = $this->generateData($form->getData());
+                $data = $this->generateData($form->getData(), $classroom);
             }
         }
 
@@ -53,10 +62,9 @@ class LabelController extends Controller
     }
 
     /**
-     * Choice action
+     * Choose the template to configure
      *
      * @param \Dyt\WebsiteBundle\Controller\Request $request
-     * @todo refactor
      *
      * @Route   ("/choices", name="choices_label")
      * @Template()
@@ -69,26 +77,18 @@ class LabelController extends Controller
     }
 
     /**
-     * Genearate data
-     * @todo refactor
+     * Genearate data for label
      *
-     * @param $zones
+     * @param array                              $zones
+     * @param \Dyt\WebsiteBundle\Model\Classroom $classroom
+     *
      * @return array
      */
-    private function generateData($zones)
+    private function generateData(array $zones = array(), Classroom $classroom)
     {
-        $data = array();
-        $student = StudentQuery::create()->findOne();
-
         foreach($zones as $key => $zone) {
-            switch($zone) {
-                case 'name':
-                    $data[$key] = $student->getLastName();
-                    break;
-                case 'initial':
-                    $data[$key] = substr($student->getLastName(),0,1);
-                    break;
-            }
+            $labelElement = LabelElementFactory::getLabelElement($zone, $classroom);
+            $data[$key] = $labelElement->renderElement();
         }
 
         return $data;
