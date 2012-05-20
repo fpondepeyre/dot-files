@@ -9,7 +9,7 @@
 <div class="row-fluid">
 
     <div class="span4">
-        <form class="form-horizontal form-search" action="{{ path('choices_label', {'name' : 'simple'}) }}" method="post" {{ form_enctype(form) }}>
+        <form class="form-horizontal form-search" action="{{ path('label', {'name' : name}) }}" method="post" {{ form_enctype(form) }}>
             {{ form_widget(form) }}
             <div class="form-actions">
                 <input type="submit" class="btn btn-primary" name="ok">
