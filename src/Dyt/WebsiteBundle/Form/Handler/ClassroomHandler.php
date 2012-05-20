@@ -1,6 +1,6 @@
 <?php
 
-namespace Dyt\WebsiteBundle\Form;
+namespace Dyt\WebsiteBundle\Form\Handler;
 
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;

@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Dyt\WebsiteBundle\Form\ClassroomType;
 use Dyt\WebsiteBundle\Model\ClassroomQuery;
 use Dyt\WebsiteBundle\Model\Classroom;
-use Dyt\WebsiteBundle\Form\ClassroomHandler;
+use Dyt\WebsiteBundle\Form\Handler\ClassroomHandler;
 
 /**
  * Classroom controller.
