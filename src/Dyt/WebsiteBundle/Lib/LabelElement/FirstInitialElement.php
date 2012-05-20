@@ -33,7 +33,7 @@ class FirstInitialElement extends LabelElementAbstract
      */
     public function renderElement()
     {
-        return substr($this->getStudent()->getFirstName(), 0, 1);
+        return substr(ucfirst($this->getStudent()->getFirstName()), 0, 1);
     }
 
     /**

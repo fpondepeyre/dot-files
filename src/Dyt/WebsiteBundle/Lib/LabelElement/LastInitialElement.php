@@ -33,7 +33,7 @@ class LastInitialElement extends LabelElementAbstract
      */
     public function renderElement()
     {
-        return ucfirst($this->getStudent()->getLastName(), 0, 1);
+        return substr(ucfirst($this->getStudent()->getLastName()), 0, 1);
     }
 
     /**

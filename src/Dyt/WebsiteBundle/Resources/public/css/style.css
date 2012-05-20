@@ -12,9 +12,15 @@
     min-height: 30px;
     position: relative;
     padding-top:30px;
+    font-size: 26px;
+}
+
+.zone p{
+    padding: 5px;
 }
 
 .edit {
+    font-size: 12px;
     background-color: #F5F5F5;
     width:80px;
     position: absolute;
@@ -26,14 +32,17 @@
 /* font */
 .schoolbell {
     font-family: 'Schoolbell', cursive;
+    font-size: 38px;
 }
 
 .alexbrush {
     font-family: 'Alex Brush', cursive;
+    font-size: 38px;
 }
 
 .maidenorange {
     font-family: 'Maiden Orange', cursive;
+    font-size: 38px;
 }
 
 

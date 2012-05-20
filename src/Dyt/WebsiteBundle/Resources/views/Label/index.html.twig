@@ -12,7 +12,9 @@
         <form class="form-horizontal form-search" action="{{ path('label', {'name' : name}) }}" method="post" {{ form_enctype(form) }}>
             {{ form_widget(form) }}
             <div class="form-actions">
-                <input type="submit" class="btn btn-primary" name="ok">
+                <input type="submit" class="btn btn-primary" name="preview" value="Preview">
+                <input type="submit" class="btn btn-primary" name="save" value="Save">
+                <input type="submit" class="btn btn-primary" name="psf" value="PDF">
             </div>
         </form>
     </div>

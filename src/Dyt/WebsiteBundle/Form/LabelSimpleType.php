@@ -9,6 +9,7 @@ use Dyt\WebsiteBundle\Lib\LabelElement\FirstInitialElement;
 use Dyt\WebsiteBundle\Lib\LabelElement\FirstNameElement;
 use Dyt\WebsiteBundle\Lib\LabelElement\LastInitialElement;
 use Dyt\WebsiteBundle\Lib\LabelElement\LastNameElement;
+use Dyt\WebsiteBundle\Lib\LabelElement\TripleFirstNameElement;
 
 /**
  * Form to edit simple label
@@ -42,10 +43,11 @@ class LabelSimpleType extends AbstractType
     private function getChoiceZones()
     {
         return array(
-            FirstInitialElement::KEY => FirstInitialElement::NAME,
-            FirstNameElement::KEY    => FirstNameElement::NAME,
-            LastInitialElement::KEY  => LastInitialElement::NAME,
-            LastNameElement::KEY     => LastNameElement::NAME
+            FirstInitialElement::KEY    => FirstInitialElement::NAME,
+            FirstNameElement::KEY       => FirstNameElement::NAME,
+            LastInitialElement::KEY     => LastInitialElement::NAME,
+            LastNameElement::KEY        => LastNameElement::NAME,
+            TripleFirstNameElement::KEY => TripleFirstNameElement::NAME
         );
     }
 
