@@ -30,10 +30,15 @@ abstract class LabelElementAbstract
      * __construct method
      *
      * @param \Dyt\WebsiteBundle\Model\Classroom $classroom
+     * @param null|\Twig_Environment             $twigEnvironment
      */
-    public function __construct(Classroom $classroom)
+    public function __construct(Classroom $classroom, Twig_Environment $twigEnvironment = null )
     {
-        $this->twig = new Twig_Environment(new Twig_Loader_String());
+        $this->twig = $twigEnvironment;
+        if (!$twigEnvironment) {
+            $this->twig = new Twig_Environment(new Twig_Loader_String());
+        }
+
         $this->classroom = $classroom;
     }
 
