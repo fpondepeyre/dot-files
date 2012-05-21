@@ -26,20 +26,32 @@ class FirstInitialElement extends LabelElementAbstract
     const NAME = 'First initial';
 
     /**
-     * The first name initial render
+     * The twig template
      *
-     * {@inheritdoc}
      * @return string
      */
-    public function renderElement()
+    public function getTwigTemplate()
     {
-        return substr(ucfirst($this->getStudent()->getFirstName()), 0, 1);
+        $template = '{{ firstInitial }}';
+
+        return $template;
+    }
+
+    /**
+     * Get the twig variables
+     *
+     * @return array
+     */
+    public function getTwigVariables()
+    {
+        $firstInitial = substr(ucfirst($this->getStudent()->getFirstName()), 0, 1);
+
+        return array('firstInitial' => $firstInitial);
     }
 
     /**
      * The element name
      *
-     * {@inheritdoc}
      * @return string
      */
     public function getName()

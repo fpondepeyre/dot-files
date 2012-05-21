@@ -26,20 +26,32 @@ class FirstNameElement extends LabelElementAbstract
     const NAME = 'First name';
 
     /**
-     * The first name render
+     *  The twig template
      *
-     * {@inheritdoc}
      * @return string
      */
-    public function renderElement()
+    public function getTwigTemplate()
     {
-        return $this->getStudent()->getFirstName();
+        $template = '{{ firstname }}';
+
+        return $template;
+    }
+
+    /**
+     * Get the twig variables
+     *
+     * @return array
+     */
+    public function getTwigVariables()
+    {
+        $firstname = $this->getStudent()->getFirstName();
+
+        return array('firstname' => $firstname);
     }
 
     /**
      * The element name
      *
-     * {@inheritdoc}
      * @return string
      */
     public function getName()

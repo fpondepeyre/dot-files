@@ -26,20 +26,32 @@ class LastInitialElement extends LabelElementAbstract
     const NAME = 'Last initial';
 
     /**
-     * The last name initial render
+     *  The twig template
      *
-     * {@inheritdoc}
      * @return string
      */
-    public function renderElement()
+    public function getTwigTemplate()
     {
-        return substr(ucfirst($this->getStudent()->getLastName()), 0, 1);
+        $template = '{{ lastInitial }}';
+
+        return $template;
+    }
+
+    /**
+     * Get the twig variables
+     *
+     * @return array
+     */
+    public function getTwigVariables()
+    {
+        $lastInitial = substr(ucfirst($this->getStudent()->getLastName()), 0, 1);
+
+        return array('lastInitial' => $lastInitial);
     }
 
     /**
      * The element name
      *
-     * {@inheritdoc}
      * @return string
      */
     public function getName()

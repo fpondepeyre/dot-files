@@ -37,6 +37,31 @@ class TripleFirstNameElement extends LabelElementAbstract
         return sprintf('<p class="schoolbell">%s</p><p class="alexbrush">%s</p><p class="maidenorange">%s</p>', $firstName, $firstName, $firstName);
     }
 
+
+    /**
+     *  The twig template
+     *
+     * @return string
+     */
+    public function getTwigTemplate()
+    {
+        $template = '<p class="schoolbell">{{ firstName }}</p><p class="alexbrush">{{ firstName }}</p><p class="maidenorange">{{ firstName }}</p>';
+
+        return $template;
+    }
+
+    /**
+     * Get the twig variables
+     *
+     * @return array
+     */
+    public function getTwigVariables()
+    {
+        $firstName = $this->getStudent()->getFirstName();
+
+        return array('firstName' => $firstName);
+    }
+
     /**
      * The element name
      *
