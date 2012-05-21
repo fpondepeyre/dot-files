@@ -5,6 +5,8 @@ namespace Dyt\WebsiteBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
+use Dyt\WebsiteBundle\Model\ClassroomQuery;
+
 use Dyt\WebsiteBundle\Lib\LabelElement\FirstInitialElement;
 use Dyt\WebsiteBundle\Lib\LabelElement\FirstNameElement;
 use Dyt\WebsiteBundle\Lib\LabelElement\LastInitialElement;
@@ -26,6 +28,9 @@ class LabelSimpleType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
+            ->add('classroom', 'choice', array(
+                'choices' => $this->getChoiceClassroom()
+            ))
             ->add('zone1', 'choice', array(
                 'choices' => $this->getChoiceZones()
             ))
@@ -34,6 +39,16 @@ class LabelSimpleType extends AbstractType
             ));
     }
 
+    /**
+     * Get the classroom list
+     *
+     * @return array
+     */
+    public function getChoiceClassroom()
+    {
+        $classrooms = ClassroomQuery::create()->find()->toKeyValue('Id', 'Name');
+        return $classrooms;
+    }
     /**
      * Get the zone choices
      *

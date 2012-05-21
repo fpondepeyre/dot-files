@@ -3,7 +3,9 @@
         <div class="span4">
             <div class="zone">
                 <div class="edit">zone 1</div>
-                {{ data.zone1|raw }}
+                {% if data.zone1 is defined %}
+                    {{ data.zone1|raw }}
+                {% endif %}
             </div>
         </div>
         <div class="span4">
@@ -14,7 +16,9 @@
         <div class="span4">
             <div class="zone">
                 <div class="edit">zone 3</div>
-                {{ data.zone3|raw }}
+                {% if data.zone3 is defined %}
+                    {{ data.zone3|raw }}
+                {% endif %}
             </div>
         </div>
     </div>
@@ -29,7 +33,9 @@
         <div class="span4">
             <div class="zone">
                 <div class="edit">zone 5</div>
+                {% if data.zone5 is defined %}
                 {{ data.zone5|raw }}
+                {% endif %}
             </div>
         </div>
         <div class="span4">

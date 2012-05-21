@@ -34,22 +34,15 @@ class LabelController extends Controller
      */
     public function indexAction(Request $request, $name)
     {
-        $classroom = ClassroomQuery::create()->findOne();
-
-        // @todo refactor it
-        $data = array(
-            'zone1' => 'zone 1',
-            'zone2' => 'zone 2',
-            'zone3' => 'zone 3',
-            'zone5' => 'zone 5'
-        );
-
+        $data = array();
         $formClass = LabelTypeFactory::getLabelType($name);
         $form = $this->createForm($formClass);
 
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
+                $formData = $form->getData('classroom');
+                $classroom = ClassroomQuery::create()->findPk($formData['classroom']);
                 $data = $this->generateData($form->getData(), $classroom);
             }
         }
@@ -86,9 +79,13 @@ class LabelController extends Controller
      */
     private function generateData(array $zones = array(), Classroom $classroom)
     {
+        $data = array();
+
         foreach($zones as $key => $zone) {
-            $labelElement = LabelElementFactory::getLabelElement($zone, $classroom);
-            $data[$key] = $labelElement->renderElement();
+            if (strpos($key, 'zone') !== false) {
+                $labelElement = LabelElementFactory::getLabelElement($zone, $classroom);
+                $data[$key] = $labelElement->renderElement();
+            }
         }
 
         return $data;
