@@ -12,6 +12,9 @@ use Dyt\WebsiteBundle\Form\Service\LabelTypeFactory;
 use Dyt\WebsiteBundle\Model\ClassroomQuery;
 
 use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementFactory;
+use Dyt\WebsiteBundle\Form\LabelCustomType;
+use Dyt\WebsiteBundle\Lib\LabelElement\CustomElement;
+
 use Dyt\WebsiteBundle\Model\Classroom;
 
 /**
@@ -89,6 +92,42 @@ class LabelController extends Controller
         }
 
         return $data;
+    }
+
+    /**
+     * Custom label editor
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param mixed                                     $zone
+     *
+     * @Route    ("/template/custom/{zone}", name="custom_label")
+     * @Template ()
+     *
+     * @return array
+     */
+    public function customLabelAction(Request $request, $zone)
+    {
+        $data = array();
+        $formClass = LabelTypeFactory::getLabelType('custom');
+        $form = $this->createForm($formClass);
+
+        $classroom = ClassroomQuery::create()->findOne();
+
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $formData = $form->getData();
+                $customElement = new CustomElement($classroom);
+                $customElement->setTemplate($formData['template']);
+                $data[$zone] = $customElement->renderElement();
+            }
+        }
+
+        return array(
+            'data' => $data,
+            'zone' => $zone,
+            'form' => $form->createView()
+        );
     }
 
 } //LabelController

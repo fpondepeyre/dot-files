@@ -46,6 +46,9 @@ class LabelElementFactory
             case TripleFirstNameElement::KEY:
                 return new TripleFirstNameElement($classroom);
                 break;
+            case CustomElement::KEY:
+                return new CustomElement($classroom);
+                break;
             default:
                 throw new \Exception(sprintf('Unable to create the LabelElement with key "%s"', $labelElementKey));
         }

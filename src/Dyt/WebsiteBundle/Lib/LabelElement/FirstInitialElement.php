@@ -6,7 +6,7 @@ use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementAbstract;
 
 /**
  * FirstInitialElement class
- * Get the first
+ * Get the firstname initial
  *
  */
 class FirstInitialElement extends LabelElementAbstract

@@ -5,34 +5,61 @@ namespace Dyt\WebsiteBundle\Lib\LabelElement;
 use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementAbstract;
 
 /**
- * LastInitialElement class
- * Get the lastname initial
+ * CustomElement class
+ * Render a custom zone label
  *
  */
-class LastInitialElement extends LabelElementAbstract
+class CustomElement extends LabelElementAbstract
 {
     /**
      * The element key
      *
      * @const KEY
      */
-    const KEY = 'last_name_initial';
+    const KEY = 'custom';
 
     /**
      * The element name
      *
      * @const NAME
      */
-    const NAME = 'Last initial';
+    const NAME = 'Custom';
 
     /**
-     *  The twig template
+     * The twig template
+     *
+     * @var $template
+     */
+    private $template;
+
+    /**
+     * Set the twig template
+     *
+     * @param $template
+     */
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+    }
+
+    /**
+     * Get the twig templace
+     *
+     * @return mixed
+     */
+    public function getTemplate()
+    {
+        return $this->template;
+    }
+
+    /**
+     * The twig template
      *
      * @return string
      */
     public function getTwigTemplate()
     {
-        $template = '{{ lastInitial }}';
+        $template = $this->getTemplate();
 
         return $template;
     }
@@ -44,9 +71,7 @@ class LastInitialElement extends LabelElementAbstract
      */
     public function getTwigVariables()
     {
-        $lastInitial = substr(ucfirst($this->getStudent()->getLastName()), 0, 1);
-
-        return array('lastInitial' => $lastInitial);
+        return array('student' => $this->getStudent());
     }
 
     /**

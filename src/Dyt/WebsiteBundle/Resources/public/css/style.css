@@ -45,7 +45,15 @@
     font-size: 38px;
 }
 
+/* modal */
+form.form-modal {
+    margin: 0;
+}
 
+textarea.textarea-modal {
+    width: 98%;
+    height: 150px;
+}
 
 
 

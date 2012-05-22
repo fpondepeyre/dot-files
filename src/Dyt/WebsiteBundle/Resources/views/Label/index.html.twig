@@ -27,7 +27,25 @@
     </div>
 </div>
 
+<div class="modal hide" id="myModal"></div>
 
+{% endblock %}
 
+{% block inline_javascripts %}
+<script>
+    $(function(){
+        var url = undefined;
+
+        $('.editZoneLink').click(function(e){
+            e.preventDefault();
+            url = $(this).attr('href');
+            $('#myModal').modal();
+        });
+
+        $('#myModal').on('show', function(){
+            $(this).load(url);
+        });
+    });
+</script>
 {% endblock %}
 

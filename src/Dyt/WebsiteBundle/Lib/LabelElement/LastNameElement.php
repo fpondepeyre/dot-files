@@ -6,7 +6,7 @@ use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementAbstract;
 
 /**
  * LastNameElement class
- * Get the last name element
+ * Get the lastname element
  *
  */
 class LastNameElement extends LabelElementAbstract
