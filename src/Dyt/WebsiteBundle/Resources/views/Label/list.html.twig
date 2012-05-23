@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+{% if app.session.hasFlash('notice') %}
+<div class="alert alert-success">
+    <a class="close" data-dismiss="alert">×</a>
+    {{ app.session.flash('notice') }}
+</div>
+{% endif %}
+
+<h2>Labels
+    <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
+</h2>
+<h3>Labels list</h3>
+
+<div class="row">
+    <div class="span3">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat egestas libero at venenatis.
+            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Cum
+            sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    </div>
+    <div class="span9">
+        <h4>Label list</h4>
+        <table class="table table-striped table-bordered table-condensed">
+            <thead>
+            <tr>
+                <th>{{ 'Name'|trans }}</th>
+                <th>{{ 'Created at'|trans }}</th>
+                <th>{{ 'Actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for label in labels %}
+            <tr>
+                <td>
+                    <a href="{{ path('label_show', {'id' : label.id }) }}">{{ label.name }}</a>
+                </td>
+                <td>{{ label.createdAt('Y-m-d')|date("F jS \\a\\t g:ia") }}</td>
+                <td>
+                    <a href="{{ path('label_show', {'id' : label.id}) }}" class="btn btn-mini btn-primary small"><i class="icon-check icon-white"></i>&nbsp;Show</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('choices_label') }}" class="btn btn-primary"><i class="icon-plus icon-white"></i>&nbsp;New label</a>
+
+    </div>
+</div>
+{% endblock %}

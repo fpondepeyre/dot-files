@@ -125,3 +125,19 @@ Dyt\WebsiteBundle\Model\Student:
     last_name: CHENE
     birthday: '2008-10-23'
     sex: '0'
+
+Dyt\WebsiteBundle\Model\Label:
+  Label_1:
+    classroom_id: Classroom_1
+    template: 'simple'
+    name: 'My username labels'
+
+Dyt\WebsiteBundle\Model\Zone:
+  Zone_1:
+    label_id: Label_1
+    name: zone1
+    template: '{{ firstInitial }}'
+  Zone_2:
+    label_id: Label_1
+    name: zone2
+    template: '{{ student.firstname }}'

@@ -10,12 +10,18 @@ use Dyt\WebsiteBundle\Model\StudentQuery;
 use Dyt\WebsiteBundle\Form\Service\LabelTypeFactory;
 
 use Dyt\WebsiteBundle\Model\ClassroomQuery;
+use Dyt\WebsiteBundle\Model\LabelQuery;
+use Dyt\WebsiteBundle\Model\ZoneQuery;
 
 use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementFactory;
 use Dyt\WebsiteBundle\Form\LabelCustomType;
 use Dyt\WebsiteBundle\Lib\LabelElement\CustomElement;
 
 use Dyt\WebsiteBundle\Model\Classroom;
+use Dyt\WebsiteBundle\Model\Zone;
+use Dyt\WebsiteBundle\Model\Label;
+
+use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementBuilder;
 
 /**
  * Label controller.
@@ -25,17 +31,34 @@ use Dyt\WebsiteBundle\Model\Classroom;
 class LabelController extends Controller
 {
     /**
+     * List
+     *
+     * @Route    ("/list", name="label_list")
+     * @Template ()
+     *
+     * @return array
+     */
+    public function listAction()
+    {
+        $labels = LabelQuery::create()->find();
+
+        return array(
+            'labels' => $labels
+        );
+    }
+
+    /**
      * Label editor
      *
      * @param \Dyt\WebsiteBundle\Controller\Request $request
      * @param string                                $name
      *
-     * @Route   ("/{name}/template", name="label")
+     * @Route   ("/{name}/new", name="label_new")
      * @Template()
      *
      * @return array
      */
-    public function indexAction(Request $request, $name)
+    public function newAction(Request $request, $name)
     {
         $data = array();
         $formClass = LabelTypeFactory::getLabelType($name);
@@ -44,9 +67,12 @@ class LabelController extends Controller
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
-                $formData = $form->getData('classroom');
-                $classroom = ClassroomQuery::create()->findPk($formData['classroom']);
-                $data = $this->generateData($form->getData(), $classroom);
+                $form = $form->getData();
+
+                $classroom = ClassroomQuery::create()->findPk($form['classroom']);
+                $this->generateData($form, $classroom);
+
+                return $this->redirect($this->generateUrl('label_list'));
             }
         }
 
@@ -54,6 +80,38 @@ class LabelController extends Controller
             'name' => $name,
             'data' => $data,
             'form' => $form->createView()
+        );
+    }
+
+    /**
+     * Show label
+     *
+     * @param $id
+     *
+     * @Route    ("/{id}/show", name="label_show")
+     * @Template ()
+     *
+     * @return array
+     */
+    public function showAction($id)
+    {
+        $label = LabelQuery::create()
+            ->joinWith('Zone')
+            ->findPk($id);
+
+        $data = array();
+        $labelElementBuilder = new LabelElementBuilder();
+
+        foreach($label->getZones() as $zone) {
+            $customElement = new CustomElement($label->getClassroom());
+            $customElement->setTemplate($zone->getTemplate());
+            $labelElementBuilder->setLabelElement($customElement);
+            $data[$zone->getName()] = $labelElementBuilder->render();
+        }
+
+        return array(
+            'name' => $label->getTemplate(),
+            'data' => $data,
         );
     }
 
@@ -74,6 +132,7 @@ class LabelController extends Controller
 
     /**
      * Genearate data for label
+     * @todo refactor and rename, it's a process form method
      *
      * @param array                              $zones
      * @param \Dyt\WebsiteBundle\Model\Classroom $classroom
@@ -84,10 +143,23 @@ class LabelController extends Controller
     {
         $data = array();
 
+        $label = new Label();
+        $label->setName($zones['name']);
+        $label->setClassroomId($zones['classroom']);
+        $label->setTemplate('simple');
+        $label->save();
+
         foreach($zones as $key => $zone) {
             if (strpos($key, 'zone') !== false) {
                 $labelElement = LabelElementFactory::getLabelElement($zone, $classroom);
-                $data[$key] = $labelElement->renderElement();
+
+                $zone = ZoneQuery::create()
+                    ->filterByLabel($label)
+                    ->filterByName($key)
+                    ->findOneOrCreate();
+
+                $zone->setTemplate($labelElement->getTwigTemplate());
+                $zone->save();
             }
         }
 

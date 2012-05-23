@@ -28,6 +28,12 @@ class LabelSimpleType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
+            ->add('name', 'text', array(
+                'attr' => array(
+                    'placeholder' => 'Label name',
+                    'class'       => 'input-large'
+                )
+            ))
             ->add('classroom', 'choice', array(
                 'choices' => $this->getChoiceClassroom()
             ))
