@@ -11,7 +11,7 @@ class ClassroomType extends AbstractType
      * Configure form
      *
      * @param \Symfony\Component\Form\FormBuilder $builder
-     * @param array $options
+     * @param array                               $options
      */
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -29,7 +29,7 @@ class ClassroomType extends AbstractType
     /**
      * Get default options
      *
-     * @param array $options
+     * @param  array $options
      * @return array
      */
     public function getDefaultOptions(array $options)

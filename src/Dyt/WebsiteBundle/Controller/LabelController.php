@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Dyt\WebsiteBundle\Model\StudentQuery;
 use Dyt\WebsiteBundle\Form\Service\LabelTypeFactory;
 
 use Dyt\WebsiteBundle\Model\ClassroomQuery;
@@ -14,7 +13,6 @@ use Dyt\WebsiteBundle\Model\LabelQuery;
 use Dyt\WebsiteBundle\Model\ZoneQuery;
 
 use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementFactory;
-use Dyt\WebsiteBundle\Form\LabelCustomType;
 use Dyt\WebsiteBundle\Lib\LabelElement\CustomElement;
 
 use Dyt\WebsiteBundle\Model\Classroom;
@@ -118,7 +116,7 @@ class LabelController extends Controller
      * Process label form
      *
      * @param $form
-     * @param \Dyt\WebsiteBundle\Model\Label $label
+     * @param  \Dyt\WebsiteBundle\Model\Label                     $label
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     private function processForm($form, Label $label = null)
@@ -134,7 +132,7 @@ class LabelController extends Controller
         $label->setName($data['name']);
         $label->save();
 
-        foreach($data as $key => $zone) {
+        foreach ($data as $key => $zone) {
             if (strpos($key, 'zone') !== false) {
                 $labelElement = LabelElementFactory::getLabelElement($zone, $classroom);
                 $zone = ZoneQuery::create()

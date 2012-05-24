@@ -19,7 +19,7 @@ class ClassroomHandler
     /**
      * __construct method
      *
-     * @param Form $form
+     * @param Form    $form
      * @param Request $request
      */
     public function __construct(Form $form, Request $request)
@@ -39,6 +39,7 @@ class ClassroomHandler
             $this->form->bindRequest($this->request);
             if ($this->form->isValid()) {
                 $this->onSuccess($this->form->getData());
+
                 return true;
             }
         }

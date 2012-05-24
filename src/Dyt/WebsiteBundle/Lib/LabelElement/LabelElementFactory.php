@@ -30,7 +30,7 @@ class LabelElementFactory
      */
     public static function getLabelElement($labelElementKey, Classroom $classroom)
     {
-        switch($labelElementKey) {
+        switch ($labelElementKey) {
             case FirstInitialElement::KEY:
                 return new FirstInitialElement($classroom);
                 break;

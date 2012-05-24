@@ -9,8 +9,8 @@ use Dyt\WebsiteBundle\Model\Classroom;
  */
 class LabelElementBuilder
 {
-    var $labelElement;
-    var $classroom;
+    public $labelElement;
+    public $classroom;
 
     public function __construct()
     {

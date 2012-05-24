@@ -32,7 +32,7 @@ class LabelTypeFactory
      */
     public static function getLabelType($template)
     {
-        switch($template) {
+        switch ($template) {
             case 'simple':
                 return new LabelSimpleType();
                 break;

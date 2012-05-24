@@ -23,7 +23,7 @@ class Label extends BaseLabel
     {
         $labelElementBuilder = new LabelElementBuilder();
 
-        foreach($this->getZones() as $zone) {
+        foreach ($this->getZones() as $zone) {
             $customElement = new CustomElement($this->getClassroom());
             $customElement->setTemplate($zone->getTemplate());
             $labelElementBuilder->setLabelElement($customElement);

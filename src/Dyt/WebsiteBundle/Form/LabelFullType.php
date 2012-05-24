@@ -50,6 +50,7 @@ class LabelFullType extends AbstractType
     public function getChoiceClassroom()
     {
         $classrooms = ClassroomQuery::create()->find()->toKeyValue('Id', 'Name');
+
         return $classrooms;
     }
 
