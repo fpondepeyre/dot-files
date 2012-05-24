@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+{% form_theme form 'MopaBootstrapBundle:Form:fields.html.twig' %}
+
+{% block body %}
+
+<h2>Label <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
+<hr/>
+
+<div class="row-fluid">
+
+    <div class="span4">
+        <form class="form-horizontal form-search" action="{{ path('label_edit', {'id' : label.id}) }}" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+            <div class="form-actions">
+                <input type="submit" class="btn btn-primary" name="preview" value="Preview">
+                <input type="submit" class="btn btn-primary" name="save" value="Save">
+                <input type="submit" class="btn btn-primary" name="psf" value="PDF">
+            </div>
+        </form>
+    </div>
+
+    <div class="span8">
+        <h6>preview</h6>
+        <div class="well">
+            {% include 'DytWebsiteBundle:Label:template/' ~ label.template ~ '.html.twig' %}
+        </div>
+    </div>
+</div>
+
+<div class="modal hide" id="myModal"></div>
+
+{% endblock %}
+
+{% block inline_javascripts %}
+<script>
+    $(function(){
+        var url = undefined;
+
+        $('.editZoneLink').click(function(e){
+            e.preventDefault();
+            url = $(this).attr('href');
+            $('#myModal').modal();
+        });
+
+        $('#myModal').on('show', function(){
+            $(this).load(url);
+        });
+    });
+</script>
+{% endblock %}
+

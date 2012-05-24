@@ -3,7 +3,8 @@
 namespace Dyt\WebsiteBundle\Model;
 
 use Dyt\WebsiteBundle\Model\om\BaseLabel;
-
+use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementBuilder;
+use Dyt\WebsiteBundle\Lib\LabelElement\CustomElement;
 
 /**
  * Skeleton subclass for representing a row from the 'label' table.
@@ -16,6 +17,19 @@ use Dyt\WebsiteBundle\Model\om\BaseLabel;
  *
  * @package    propel.generator.src.Dyt.WebsiteBundle.Model
  */
-class Label extends BaseLabel {
+class Label extends BaseLabel
+{
+    public function getDataByZone()
+    {
+        $labelElementBuilder = new LabelElementBuilder();
 
+        foreach($this->getZones() as $zone) {
+            $customElement = new CustomElement($this->getClassroom());
+            $customElement->setTemplate($zone->getTemplate());
+            $labelElementBuilder->setLabelElement($customElement);
+            $data[$zone->getName()] = $labelElementBuilder->render();
+        }
+
+        return $data;
+    }
 } // Label

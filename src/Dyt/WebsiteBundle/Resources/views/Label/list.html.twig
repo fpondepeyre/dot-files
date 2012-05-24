@@ -38,6 +38,7 @@
                 </td>
                 <td>{{ label.createdAt('Y-m-d')|date("F jS \\a\\t g:ia") }}</td>
                 <td>
+                    <a href="{{ path('label_edit', {'id' : label.id}) }}" class="btn btn-mini btn-primary small"><i class="icon-edit icon-white"></i>&nbsp;Edit</a>
                     <a href="{{ path('label_show', {'id' : label.id}) }}" class="btn btn-mini btn-primary small"><i class="icon-check icon-white"></i>&nbsp;Show</a>
                 </td>
             </tr>
