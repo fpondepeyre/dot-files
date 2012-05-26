@@ -57,7 +57,9 @@ class LabelController extends Controller
      */
     public function newAction(Request $request, $name)
     {
-        $form = $this->createForm(LabelTypeFactory::getLabelType($name));
+        $form = $this->createForm(LabelTypeFactory::getLabelType($name), array(
+            'template' => $name
+        ));
 
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
@@ -93,7 +95,11 @@ class LabelController extends Controller
             ->joinWith('Zone')
             ->findPk($id);
 
-        $form = $this->createForm(LabelTypeFactory::getLabelType($label->getTemplate()));
+        $form = $this->createForm(LabelTypeFactory::getLabelType($label->getTemplate()), array(
+            'name'      => $label->getName(),
+            'classroom' => $label->getClassroom()->getId(),
+            'template'  => $label->getTemplate()
+        ));
 
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
@@ -127,7 +133,7 @@ class LabelController extends Controller
         if (!$label) {
             $label = new Label();
             $label->setClassroom($classroom);
-            $label->setTemplate('simple');
+            $label->setTemplate($data['template']);
         }
         $label->setName($data['name']);
         $label->save();

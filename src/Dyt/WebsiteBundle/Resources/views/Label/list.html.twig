@@ -26,6 +26,7 @@
             <thead>
             <tr>
                 <th>{{ 'Name'|trans }}</th>
+                <th>{{ 'Template'|trans }}</th>
                 <th>{{ 'Created at'|trans }}</th>
                 <th>{{ 'Actions'|trans }}</th>
             </tr>
@@ -36,6 +37,7 @@
                 <td>
                     <a href="{{ path('label_show', {'id' : label.id }) }}">{{ label.name }}</a>
                 </td>
+                <td>{{ label.template }}</td>
                 <td>{{ label.createdAt('Y-m-d')|date("F jS \\a\\t g:ia") }}</td>
                 <td>
                     <a href="{{ path('label_edit', {'id' : label.id}) }}" class="btn btn-mini btn-primary small"><i class="icon-edit icon-white"></i>&nbsp;Edit</a>

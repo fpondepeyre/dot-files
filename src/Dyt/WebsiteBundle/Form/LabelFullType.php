@@ -28,18 +28,28 @@ class LabelFullType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
+            ->add('name', 'text', array(
+                'attr' => array(
+                    'placeholder' => 'Label name',
+                    'class'       => 'input-large'
+                )
+            ))
             ->add('classroom', 'choice', array(
                 'choices' => $this->getChoiceClassroom()
             ))
             ->add('zone1', 'choice', array(
+                'empty_value' => 'Choose an option',
                 'choices' => $this->getChoiceZones()
             ))
             ->add('zone3', 'choice', array(
+                'empty_value' => 'Choose an option',
                 'choices' => $this->getChoiceZones(),
             ))
             ->add('zone5', 'choice', array(
+                'empty_value' => 'Choose an option',
                 'choices' => $this->getChoiceZones(),
-            ));
+            ))
+            ->add('template', 'hidden');
     }
 
     /**

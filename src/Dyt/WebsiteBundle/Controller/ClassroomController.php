@@ -30,7 +30,7 @@ class ClassroomController extends Controller
     public function listAction()
     {
         $classrooms = ClassroomQuery::create()
-            ->joinWith('Student')
+            ->joinWith('Student', \Criteria::LEFT_JOIN)
             ->withColumn('count(Student.Id)', 'nbStudent')
             ->groupBy('Student.ClassroomId')
             ->find();

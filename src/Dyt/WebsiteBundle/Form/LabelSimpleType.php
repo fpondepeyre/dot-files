@@ -38,11 +38,14 @@ class LabelSimpleType extends AbstractType
                 'choices' => $this->getChoiceClassroom()
             ))
             ->add('zone1', 'choice', array(
-                'choices' => $this->getChoiceZones()
+                'empty_value' => 'Choose an option',
+                'choices'     => $this->getChoiceZones()
             ))
             ->add('zone2', 'choice', array(
+                'empty_value' => 'Choose an option',
                 'choices' => $this->getChoiceZones(),
-            ));
+            ))
+            ->add('template', 'hidden');
     }
 
     /**
