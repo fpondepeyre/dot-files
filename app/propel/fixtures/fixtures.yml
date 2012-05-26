@@ -1,7 +1,39 @@
+FOS\UserBundle\Propel\User:
+  User_1:
+    username: florian
+    username_canonical: florian
+    email: fpondepeyre@gmail.com
+    email_canonical : fpondepeyre@gmail.com
+    salt: e8b7zppq874084cog8ckoccscs88cwo
+    confirmation_token: 3fjdx8xpsomcs4o4o4cww0oc8gks08k44k8wccoscgw8g4soww
+    credentials_expired: 0
+    enabled: '1'
+    roles: {  }
+  User_2:
+    username: laurent
+    username_canonical: laurent
+    email: laurent.chavane@gmail.com
+    email_canonical : laurent.chavane@gmail.com
+    salt: e8b7zppq874084cog8ckoccscs88cwo
+    confirmation_token: 3fjdx8xpsomcs4o4o4cww0oc8gks08k44k8wccoscgw8g4sozz
+    credentials_expired: 0
+    enabled: '1'
+    roles: {  }
+
+Dyt\WebsiteBundle\Model\School:
+  School_1:
+    fos_user_id: User_1
+    name: 'Ecole Jean Moulin'
+  School_2:
+    fos_user_id: User_2
+    name: 'Ecole de Borest'
+    
 Dyt\WebsiteBundle\Model\Classroom:
   Classroom_1:
+    school_id: 'School_1'
     name: 'My classroom'
   Classroom_2:
+    school_id: 'School_2'
     name: 'My classroom'
 
 Dyt\WebsiteBundle\Model\RefLevel:
@@ -94,32 +126,5 @@ Dyt\WebsiteBundle\Model\Student:
     birthday: '2008-10-23'
     sex: '0'
 
-FOS\UserBundle\Propel\User:
-  User_1:
-    username: florian
-    username_canonical: florian
-    email: fpondepeyre@gmail.com
-    email_canonical : fpondepeyre@gmail.com
-    salt: e8b7zppq874084cog8ckoccscs88cwo
-    confirmation_token: 3fjdx8xpsomcs4o4o4cww0oc8gks08k44k8wccoscgw8g4soww
-    credentials_expired: 0
-    enabled: '1'
-    roles: {  }
-  User_2:
-    username: laurent
-    username_canonical: laurent
-    email: laurent.chavane@gmail.com
-    email_canonical : laurent.chavane@gmail.com
-    salt: e8b7zppq874084cog8ckoccscs88cwo
-    confirmation_token: 3fjdx8xpsomcs4o4o4cww0oc8gks08k44k8wccoscgw8g4sozz
-    credentials_expired: 0
-    enabled: '1'
-    roles: {  }
+
     
-Dyt\WebsiteBundle\Model\School:
-  School_1:
-    fos_user_id: User_1
-    name: 'Ecole Jean Moulin'
-  School_2:
-    fos_user_id: User_2
-    name: 'Ecole de Borest'
