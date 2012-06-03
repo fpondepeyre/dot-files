@@ -8,7 +8,7 @@ use Dyt\WebsiteBundle\Model\om\BaseClassroom;
 /**
  * Skeleton subclass for representing a row from the 'classroom' table.
  *
- * 
+ *
  *
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
@@ -16,6 +16,6 @@ use Dyt\WebsiteBundle\Model\om\BaseClassroom;
  *
  * @package    propel.generator.src.Dyt.WebsiteBundle.Model
  */
-class Classroom extends BaseClassroom {
-
+class Classroom extends BaseClassroom
+{
 } // Classroom

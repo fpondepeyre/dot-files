@@ -8,7 +8,7 @@ use Dyt\WebsiteBundle\Model\om\BaseStudentQuery;
 /**
  * Skeleton subclass for performing query and update operations on the 'student' table.
  *
- * 
+ *
  *
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
@@ -16,6 +16,6 @@ use Dyt\WebsiteBundle\Model\om\BaseStudentQuery;
  *
  * @package    propel.generator.src.Dyt.WebsiteBundle.Model
  */
-class StudentQuery extends BaseStudentQuery {
-
+class StudentQuery extends BaseStudentQuery
+{
 } // StudentQuery

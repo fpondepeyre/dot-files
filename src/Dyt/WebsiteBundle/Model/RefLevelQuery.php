@@ -8,7 +8,7 @@ use Dyt\WebsiteBundle\Model\om\BaseRefLevelQuery;
 /**
  * Skeleton subclass for performing query and update operations on the 'ref_level' table.
  *
- * 
+ *
  *
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
@@ -16,6 +16,6 @@ use Dyt\WebsiteBundle\Model\om\BaseRefLevelQuery;
  *
  * @package    propel.generator.src.Dyt.WebsiteBundle.Model
  */
-class RefLevelQuery extends BaseRefLevelQuery {
-
+class RefLevelQuery extends BaseRefLevelQuery
+{
 } // RefLevelQuery

@@ -8,10 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 use Dyt\WebsiteBundle\Model\LabelQuery;
-use Dyt\WebsiteBundle\Model\ZoneQuery;
 use Dyt\WebsiteBundle\Lib\LabelElement\StandardElement;
 use Dyt\WebsiteBundle\Model\Zone;
 use Dyt\WebsiteBundle\Model\Classroom;
@@ -86,7 +84,7 @@ class LabelController extends Controller
             if ($form->isValid()) {
                 $form->getData()->save();
                 $zones = $this->get('session')->get('zone', array());
-                foreach($zones as $name => $zone ) {
+                foreach ($zones as $name => $zone ) {
                     Zone::upsert($label, $name, $zone->getTemplate());
                 }
 
@@ -129,7 +127,7 @@ class LabelController extends Controller
             if ($form->isValid()) {
                 $form->getData()->save();
                 $zones = $this->get('session')->get('zone', array());
-                foreach($zones as $name => $zone ) {
+                foreach ($zones as $name => $zone ) {
                     Zone::upsert($label, $name, $zone->getTemplate());
                 }
 
@@ -202,9 +200,9 @@ class LabelController extends Controller
         $classroom = $this->get('session')->get('classroom');
 
         $form = $this->createForm(new ZoneType());
-        if ($request->getMethod() == 'POST'){
+        if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
-            if ($form->isValid()){
+            if ($form->isValid()) {
                 $zone = $form->getData();
                 $this->updateSessionZone($zone);
                 $template = $this->renderTemplate($classroom, $zone);
@@ -233,7 +231,7 @@ class LabelController extends Controller
      * Generate zone content
      *
      * @param \Dyt\WebsiteBundle\Model\Classroom $classroom
-     * @param \Dyt\WebsiteBundle\Model\Zone $zone
+     * @param \Dyt\WebsiteBundle\Model\Zone      $zone
      *
      * @return mixed The template
      */

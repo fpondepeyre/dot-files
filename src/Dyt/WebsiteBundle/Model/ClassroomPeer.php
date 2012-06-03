@@ -8,7 +8,7 @@ use Dyt\WebsiteBundle\Model\om\BaseClassroomPeer;
 /**
  * Skeleton subclass for performing query and update operations on the 'classroom' table.
  *
- * 
+ *
  *
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
@@ -16,6 +16,6 @@ use Dyt\WebsiteBundle\Model\om\BaseClassroomPeer;
  *
  * @package    propel.generator.src.Dyt.WebsiteBundle.Model
  */
-class ClassroomPeer extends BaseClassroomPeer {
-
+class ClassroomPeer extends BaseClassroomPeer
+{
 } // ClassroomPeer
