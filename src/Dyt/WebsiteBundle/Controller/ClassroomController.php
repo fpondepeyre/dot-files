@@ -4,13 +4,12 @@ namespace Dyt\WebsiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Dyt\WebsiteBundle\Form\ClassroomType;
 use Dyt\WebsiteBundle\Model\ClassroomQuery;
 use Dyt\WebsiteBundle\Model\Classroom;
-use Dyt\WebsiteBundle\Form\ClassroomHandler;
+use Dyt\WebsiteBundle\Form\Handler\ClassroomHandler;
 
 /**
  * Classroom controller.
@@ -30,7 +29,7 @@ class ClassroomController extends Controller
     public function listAction()
     {
         $classrooms = ClassroomQuery::create()
-            ->joinWith('Student')
+            ->joinWith('Student', \Criteria::LEFT_JOIN)
             ->withColumn('count(Student.Id)', 'nbStudent')
             ->groupBy('Student.ClassroomId')
             ->find();
@@ -46,7 +45,7 @@ class ClassroomController extends Controller
      * @Route("/{id}/show", name="classroom_show", requirements={"id" = "\d+"})
      * @Template()
      *
-     * @param int $id
+     * @param  int   $id
      * @return array
      */
     public function showAction($id)
@@ -70,8 +69,8 @@ class ClassroomController extends Controller
      * @Route("/{id}/edit", name="classroom_edit", requirements={"id" = "\d+"})
      * @Template()
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param int $id The classroom id
+     * @param  \Symfony\Component\HttpFoundation\Request                $request
+     * @param  int                                                      $id      The classroom id
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function editAction(Request $request, $id)
@@ -85,6 +84,7 @@ class ClassroomController extends Controller
         if ($formHandler->process()) {
             return $this->redirect($this->generateUrl('classroom_show', array('id' => $id)));
         }
+
         return array(
             'classroom' => $classroom,
             'form'      => $form->createView()
@@ -97,7 +97,7 @@ class ClassroomController extends Controller
      * @Route("/new", name="classroom_new")
      * @Template()
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param  \Symfony\Component\HttpFoundation\Request                $request
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function newAction(Request $request)
@@ -108,6 +108,7 @@ class ClassroomController extends Controller
         if ($formHandler->process()) {
             return $this->redirect($this->generateUrl('classroom_show', array('id' => $classroom->getId())));
         }
+
         return array(
             'form' => $form->createView()
         );
@@ -120,7 +121,7 @@ class ClassroomController extends Controller
      * @Template()
      *
      * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param int $id The classroom id
+     * @param int                                       $id      The classroom id
      */
     public function deleteAction($id)
     {
@@ -130,6 +131,7 @@ class ClassroomController extends Controller
         }
         $classroom->delete();
         $this->get('session')->setFlash('notice', sprintf('The classroom "%s" was deleted!', $classroom->getName()));
+
         return $this->redirect($this->generateUrl('classroom_list'));
     }
 

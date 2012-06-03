@@ -5,21 +5,29 @@ namespace Dyt\WebsiteBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class SchoolType extends AbstractType
+/**
+ * Form to edit simple label
+ *
+ */
+class LabelType extends AbstractType
 {
     /**
      * Configure form
      *
-     * @param \Symfony\Component\Form\FormBuilder $builder
-     * @param array                               $options
+     * @param \Symfony\Component\Form\FormBuilder $builder The form builder
+     * @param array                               $options The form options
      */
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('name', 'text')
-            ->add('classroom', 'ClassroomType');
+            ->add('name', 'text', array(
+                'attr' => array(
+                    'placeholder' => 'Label name',
+                    'class'       => 'input-large'
+                )
+            ))
+            ->add('template', 'hidden');
     }
-
 
     /**
      * Get default options
@@ -30,7 +38,7 @@ class SchoolType extends AbstractType
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'Dyt\WebsiteBundle\Model\School',
+            'data_class' => 'Dyt\WebsiteBundle\Model\Label',
         );
     }
 
@@ -41,7 +49,7 @@ class SchoolType extends AbstractType
      */
     public function getName()
     {
-        return 'school';
+        return 'label';
     }
 
-} //SchoolType
+} //ClassroomType

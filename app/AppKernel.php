@@ -23,7 +23,8 @@ class AppKernel extends Kernel
             //new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             //new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Propel\PropelBundle\PropelBundle(),
-            new Mopa\BootstrapBundle\MopaBootstrapBundle()
+            new Mopa\BootstrapBundle\MopaBootstrapBundle(),
+            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
