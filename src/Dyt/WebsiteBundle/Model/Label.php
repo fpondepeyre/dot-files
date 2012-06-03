@@ -3,8 +3,7 @@
 namespace Dyt\WebsiteBundle\Model;
 
 use Dyt\WebsiteBundle\Model\om\BaseLabel;
-use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementBuilder;
-use Dyt\WebsiteBundle\Lib\LabelElement\CustomElement;
+use Dyt\WebsiteBundle\Lib\LabelElement\StandardElement;
 
 /**
  * Skeleton subclass for representing a row from the 'label' table.
@@ -19,17 +18,29 @@ use Dyt\WebsiteBundle\Lib\LabelElement\CustomElement;
  */
 class Label extends BaseLabel
 {
-    public function getDataByZone()
+    /**
+     * Render all zones
+     *
+     * @param array $customLabel
+     * @return array
+     */
+    public function getDataByZone($customLabel = null)
     {
-        $labelElementBuilder = new LabelElementBuilder();
+        $data = array();
 
         foreach ($this->getZones() as $zone) {
-            $customElement = new CustomElement($this->getClassroom());
+            $customElement = new StandardElement($this->getClassroom());
             $customElement->setTemplate($zone->getTemplate());
-            $labelElementBuilder->setLabelElement($customElement);
-            $data[$zone->getName()] = $labelElementBuilder->render();
+
+            $keys = ($customLabel)? array_keys($customLabel) : array();
+            if (in_array($zone->getName(), $keys)) {
+                $data[$zone->getName()] = $customLabel[$zone->getName()];
+            } else {
+                $data[$zone->getName()] = $customElement->renderElement();
+            }
         }
 
         return $data;
     }
+
 } // Label

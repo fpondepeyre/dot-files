@@ -32,14 +32,10 @@ abstract class LabelElementAbstract
      * @param \Dyt\WebsiteBundle\Model\Classroom $classroom
      * @param null|\Twig_Environment             $twigEnvironment
      */
-    public function __construct(Classroom $classroom, Twig_Environment $twigEnvironment = null )
+    public function __construct(Classroom $classroom)
     {
-        $this->twig = $twigEnvironment;
-        if (!$twigEnvironment) {
-            $this->twig = new Twig_Environment(new Twig_Loader_String());
-        }
-
         $this->classroom = $classroom;
+        $this->twig = new Twig_Environment(new Twig_Loader_String());
     }
 
     /**
@@ -109,21 +105,5 @@ abstract class LabelElementAbstract
      * @return mixed
      */
     abstract public function getTwigVariables();
-
-    /**
-     * Get the label element name
-     *
-     * @abstract
-     * @return mixed
-     */
-    abstract public function getName();
-
-    /**
-     * Get the element key
-     *
-     * @abstract
-     * @return mixed
-     */
-    abstract public function getKey();
 
 } //LabelElementAbstract

@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormBuilder;
  * Form to edit simple label
  *
  */
-class LabelCustomType extends AbstractType
+class LabelType extends AbstractType
 {
     /**
      * Configure form
@@ -19,11 +19,27 @@ class LabelCustomType extends AbstractType
      */
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $builder->add('template', 'textarea', array(
-            'attr' => array(
-                'class' => 'textarea-modal'
-            )
-        ));
+        $builder
+            ->add('name', 'text', array(
+                'attr' => array(
+                    'placeholder' => 'Label name',
+                    'class'       => 'input-large'
+                )
+            ))
+            ->add('template', 'hidden');
+    }
+
+    /**
+     * Get default options
+     *
+     * @param  array $options
+     * @return array
+     */
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'Dyt\WebsiteBundle\Model\Label',
+        );
     }
 
     /**

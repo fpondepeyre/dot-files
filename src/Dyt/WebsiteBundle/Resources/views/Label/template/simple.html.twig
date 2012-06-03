@@ -3,11 +3,15 @@
         <div class="span4">
             <div class="zone">
                 <div class="edit">
-                    <a href="{{ path('custom_label', {'zone' : 'zone1' }) }}" class="editZoneLink" ><i class="icon-edit icon-black"></i> zone 1</a>
+                    <a href="{{ path('zone', {'name' : 'zone1'}) }}" data-toggle="modal" data-target="#myModal">
+                        <i class="icon-edit icon-black"></i> zone 1
+                    </a>
                 </div>
-                {% if data.zone1 is defined %}
-                    {{ data.zone1|raw }}
-                {% endif %}
+                <div id="zone1">
+                    {% if data.zone1 is defined %}
+                        {{ data.zone1|raw }}
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
@@ -17,11 +21,15 @@
         <div class="span12">
             <div class="zone">
                 <div class="edit">
-                    <a href="{{ path('custom_label', {'zone' : 'zone2' }) }}" class="editZoneLink" ><i class="icon-edit icon-black"></i> zone 2</a>
+                    <a href="{{ path('zone', {'name' : 'zone2'}) }}" data-toggle="modal" data-target="#myModal">
+                        <i class="icon-edit icon-black"></i> zone 2
+                    </a>
                 </div>
+                <div id="zone2">
                 {% if data.zone2 is defined %}
                     {{ data.zone2|raw }}
                 {% endif %}
+                </div>
             </div>
         </div>
     </div>

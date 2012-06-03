@@ -9,22 +9,8 @@ use Dyt\WebsiteBundle\Lib\LabelElement\LabelElementAbstract;
  * Render a custom zone label
  *
  */
-class CustomElement extends LabelElementAbstract
+class StandardElement extends LabelElementAbstract
 {
-    /**
-     * The element key
-     *
-     * @const KEY
-     */
-    const KEY = 'custom';
-
-    /**
-     * The element name
-     *
-     * @const NAME
-     */
-    const NAME = 'Custom';
-
     /**
      * The twig template
      *
@@ -81,24 +67,4 @@ class CustomElement extends LabelElementAbstract
         );
     }
 
-    /**
-     * The element name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return self::NAME;
-    }
-
-    /**
-     * The element key
-     *
-     * @return string
-     */
-    public function getKey()
-    {
-        return self::KEY;
-    }
-
-} //FirstInitialElement
+} //CustomElement

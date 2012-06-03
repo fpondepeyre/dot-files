@@ -6,26 +6,31 @@
 <h2>Label <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
 <hr/>
 
-<div class="row-fluid">
+<form class="form-horizontal" action="{{ path('label_edit', {'id' : label.id}) }}" method="post" {{ form_enctype(form) }}>
 
-    <div class="span4">
-        <form class="form-horizontal form-search" action="{{ path('label_edit', {'id' : label.id}) }}" method="post" {{ form_enctype(form) }}>
-            {{ form_widget(form) }}
-            <div class="form-actions">
-                <input type="submit" class="btn btn-primary" name="preview" value="Preview">
-                <input type="submit" class="btn btn-primary" name="save" value="Save">
-                <input type="submit" class="btn btn-primary" name="psf" value="PDF">
+    <div class="row-fluid">
+        <div class="span5">
+            <h6>Configuration</h6>
+            <div class="well">
+                {{ form_widget(form) }}
             </div>
-        </form>
-    </div>
+        </div>
 
-    <div class="span8">
-        <h6>preview</h6>
-        <div class="well">
-            {% include 'DytWebsiteBundle:Label:template/' ~ label.template ~ '.html.twig' %}
+        <div class="span7">
+            <h6>Preview</h6>
+            <div class="well">
+                {% include 'DytWebsiteBundle:Label:template/' ~ label.template ~ '.html.twig' %}
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="row-fluid">
+        <div class="form-actions">
+            <input type="submit" class="btn btn-primary" name="save" value="Save">
+        </div>
+    </div>
+
+</form>
 
 <div class="modal hide" id="myModal"></div>
 
@@ -34,18 +39,12 @@
 {% block inline_javascripts %}
 <script>
     $(function(){
-        var url = undefined;
-
-        $('.editZoneLink').click(function(e){
+        $("a[data-toggle=modal]").click(function (e) {
             e.preventDefault();
-            url = $(this).attr('href');
-            $('#myModal').modal();
-        });
-
-        $('#myModal').on('show', function(){
-            $(this).load(url);
-        });
+            var target = $(this).attr('data-target');
+            var url = $(this).attr('href');
+            $(target).load(url);
+        })
     });
 </script>
 {% endblock %}
-

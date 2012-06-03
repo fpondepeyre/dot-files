@@ -16,6 +16,25 @@ use Dyt\WebsiteBundle\Model\om\BaseZone;
  *
  * @package    propel.generator.src.Dyt.WebsiteBundle.Model
  */
-class Zone extends BaseZone {
+class Zone extends BaseZone
+{
+    /**
+     * Update or insert zone
+     * Get zone by label and name. If not found, create the zone object
+     *
+     * @param Label $label
+     * @param $name
+     * @param $template
+     */
+    public static function upsert(Label $label, $name, $template = null)
+    {
+        $zone = ZoneQuery::create()
+            ->filterByLabel($label)
+            ->filterByName($name)
+            ->findOneOrCreate();
+
+        $zone->setTemplate($template);
+        $zone->save();
+    }
 
 } // Zone
