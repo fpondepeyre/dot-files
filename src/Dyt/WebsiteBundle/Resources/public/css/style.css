@@ -7,7 +7,7 @@
 /* label */
 .zone {
     text-align: center;
-    border: 3px dotted black;
+    border: 1px dashed black;
     background-color: #ffffff;
     min-height: 30px;
     position: relative;
