@@ -20,7 +20,6 @@ class SchoolType extends AbstractType
             ->add('classroom', 'ClassroomType');
     }
 
-
     /**
      * Get default options
      *

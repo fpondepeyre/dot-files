@@ -78,6 +78,8 @@
         <column name="classroom_id" type="integer" required="true"/>
         <column name="template" type="varchar" required="true"/>
         <column name="name" type="varchar" required="true"/>
+        <column name="background" type="varchar" required="false"/>
+        <column name="border" type="varchar" required="false"/>
 
         <foreign-key foreignTable="classroom" name="label_classroom">
             <reference local="classroom_id" foreign="id"/>
