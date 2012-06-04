@@ -10,6 +10,8 @@
 {% endif %}
 
 <h2>Student <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small></h2>
+<hr/>
+
 <h3>{{ classroom }}</h3>
 
 <div class="row">
@@ -34,6 +36,10 @@
                     <td>{{ entity.lastname|trans }}</td>
                     <td>{% if entity.birthday %}{{ entity.birthday|date('Y-m-d H:i:s') }}{% endif %}</td>
                     <td>{{ entity.sexString }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No students</td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -64,7 +64,7 @@ class LabelController extends Controller
      * @param \Dyt\WebsiteBundle\Controller\Request $request
      * @param string                                $template
      *
-     * @Route   ("/{template}/new", name="label_new")
+     * @Route   ("/{template}/new", name="label_new", requirements={"template" = "simple|full|custom"})
      * @Template()
      *
      * @return array

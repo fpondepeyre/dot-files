@@ -29,7 +29,7 @@ class ChartController extends Controller
     public function indexAction($id)
     {
         $classroom = ClassroomQuery::create()
-            ->joinWith('Student')
+            ->joinWith('Student', \Criteria::LEFT_JOIN)
             ->findPk($id);
 
         if (!$classroom) {
