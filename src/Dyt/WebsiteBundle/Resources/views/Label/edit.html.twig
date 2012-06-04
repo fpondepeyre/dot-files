@@ -27,6 +27,7 @@
     <div class="row-fluid">
         <div class="form-actions">
             <input type="submit" class="btn btn-primary" name="save" value="Save">
+            <button class="btn">Cancel</button>
         </div>
     </div>
 
@@ -38,13 +39,13 @@
 
 {% block inline_javascripts %}
 <script>
-    $(function(){
-        $("a[data-toggle=modal]").click(function (e) {
-            e.preventDefault();
-            var target = $(this).attr('data-target');
-            var url = $(this).attr('href');
-            $(target).load(url);
-        })
-    });
+$(function() {
+    $("a[data-toggle=modal]").click(function (e) {
+        e.preventDefault();
+        var target = $(this).attr('data-target');
+        var url = $(this).attr('href');
+        $(target).load(url);
+    })
+});
 </script>
 {% endblock %}

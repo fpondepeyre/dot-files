@@ -29,13 +29,11 @@ class LabelType extends AbstractType
             ->add('background', 'text', array(
                 'attr' => array(
                     'placeholder' => 'Background color (#ffffff)',
-                    'class'       => 'input-normal'
                 )
             ))
             ->add('border', 'text', array(
                 'attr' => array(
                     'placeholder' => 'Border style (solid 1px #000000)',
-                    'class'       => 'input-normal'
                 )
             ))
             ->add('template', 'hidden');

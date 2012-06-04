@@ -27,6 +27,7 @@
     <div class="row-fluid">
         <div class="form-actions">
             <input type="submit" class="btn btn-primary" name="save" value="Save">
+            <button class="btn">Cancel</button>
         </div>
     </div>
 
@@ -39,7 +40,7 @@
 {% block inline_javascripts %}
 
 <script>
-$(function(){
+$(function() {
     $('#label_background').blur(function(e) {
         e.preventDefault();
         $('#preview').css('background-color', $(this).val());
