@@ -63,7 +63,9 @@ class StandardElement extends LabelElementAbstract
             'firstname'    => $this->getStudent()->getFirstName(),
             'lastInitial'  => substr(ucfirst($this->getStudent()->getLastName()), 0, 1),
             'lastName'     => $this->getStudent()->getLastName(),
-            'firstName'    => $this->getStudent()->getFirstName()
+            'firstName'    => $this->getStudent()->getFirstName(),
+            'prenom'       => $this->getStudent()->getLastName()
+
         );
     }
 
