@@ -84,7 +84,7 @@ class LabelController extends Controller
             if ($form->isValid()) {
                 $form->getData()->save();
                 $zones = $this->get('session')->get('zone', array());
-                foreach ($zones as $name => $zone ) {
+                foreach ($zones as $name => $zone) {
                     Zone::upsert($label, $name, $zone->getTemplate());
                 }
 
@@ -127,7 +127,7 @@ class LabelController extends Controller
             if ($form->isValid()) {
                 $form->getData()->save();
                 $zones = $this->get('session')->get('zone', array());
-                foreach ($zones as $name => $zone ) {
+                foreach ($zones as $name => $zone) {
                     Zone::upsert($label, $name, $zone->getTemplate());
                 }
 

@@ -21,7 +21,6 @@ class ChartGenerator
         $schoolYear = $this->getChartSchoolYear();
         $students = $this->getChartStudents();
 
-
         return array(
             'schoolName' => json_encode($schoolName),
             'schoolYear' => json_encode($schoolYear),

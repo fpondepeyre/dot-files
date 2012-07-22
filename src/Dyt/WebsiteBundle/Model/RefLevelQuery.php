@@ -4,7 +4,6 @@ namespace Dyt\WebsiteBundle\Model;
 
 use Dyt\WebsiteBundle\Model\om\BaseRefLevelQuery;
 
-
 /**
  * Skeleton subclass for performing query and update operations on the 'ref_level' table.
  *

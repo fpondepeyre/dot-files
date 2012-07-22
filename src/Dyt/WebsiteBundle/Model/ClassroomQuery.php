@@ -4,7 +4,6 @@ namespace Dyt\WebsiteBundle\Model;
 
 use Dyt\WebsiteBundle\Model\om\BaseClassroomQuery;
 
-
 /**
  * Skeleton subclass for performing query and update operations on the 'classroom' table.
  *

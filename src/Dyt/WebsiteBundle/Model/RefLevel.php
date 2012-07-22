@@ -4,7 +4,6 @@ namespace Dyt\WebsiteBundle\Model;
 
 use Dyt\WebsiteBundle\Model\om\BaseRefLevel;
 
-
 /**
  * Skeleton subclass for representing a row from the 'ref_level' table.
  *
