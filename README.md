@@ -8,7 +8,7 @@ This document contains information on how to download and start using "dyt".
 1) Installation
 ---------------
 
-    git clone git@github.com:dyt/dyt.git dyt.local
+    git clone git@bitbucket.org:dyt/dyt.git dyt.local
     cd dyt.local
     chmod -R 777 app/cache app/logs
 
