@@ -12,8 +12,8 @@ php app/console propel:database:create --connection=default
 php app/console propel:build --verbose
 
 # Insert propel sql
-php app/console propel:build-sql
-php app/console propel:insert-sql --force --connection=default
+php app/console propel:sql:build
+php app/console propel:sql:insert --force --connection=default
 php app/console propel:fixtures:load --connection=default
 
 # Create the demo user fos

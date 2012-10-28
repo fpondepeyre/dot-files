@@ -1,0 +1,30 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    font-size: 12px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-image: url('/bundles/dytwebsite/img/straws.png');
+    background-repeat: repeat;
+}
+
+.section {
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.form-margin {
+    margin: 0px;
+}
+
+.form-actions {
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

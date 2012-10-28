@@ -1,0 +1,7 @@
+parameters:
+#    dyt_website.example.class: Dyt\WebsiteBundle\Example
+
+services:
+#    dyt_website.example:
+#        class: %dyt_website.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

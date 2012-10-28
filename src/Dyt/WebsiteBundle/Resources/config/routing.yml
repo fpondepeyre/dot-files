@@ -1,0 +1,3 @@
+dyt_website_homepage:
+    pattern:  /
+    defaults: { _controller: DytWebsiteBundle:Default:index }

@@ -1,29 +1,14 @@
 {% form_theme form 'MopaBootstrapBundle:Form:fields.html.twig' %}
 
-{% block body %}
-    {% block fos_user_content %}
-        <h2>Register
-            <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small>
-        </h2>
-        <h3>Register form</h3>
+<div class='container'>
+    <div class="section" style="width:450px;margin:auto;">
 
-        <div class="row">
-            <div class="span3">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat egestas libero at venenatis.
-                    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla facilisi. Cum
-                    sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="form-margin">
+            {{ form_widget(form) }}
+
+            <div class="form-actions">
+                <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
             </div>
-            <div class="span9">
-                <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal well">
-                    <fieldset>
-                        <legend>Register form</legend>
-                        {{ form_widget(form) }}
-                    </fieldset>
-                    <div>
-                        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-primary"/>
-                    </div>
-                </form>
-            </div>
-        </div>
-    {% endblock fos_user_content %}
-{% endblock %}
+        </form>
+    </div>
+</div>

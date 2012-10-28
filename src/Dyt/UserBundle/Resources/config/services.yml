@@ -1,0 +1,30 @@
+services:
+    dyt_user.change.password.form.type:
+        class: Dyt\UserBundle\Form\Type\ChangePasswordFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: dyt_user_change_password }
+
+    dyt_user.profile.form.type:
+        class: Dyt\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: dyt_user_profile }
+
+    dyt_user.registration.form.type:
+        class: Dyt\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: dyt_user_registration }
+
+    dyt_user.resetting.form.type:
+        class: Dyt\UserBundle\Form\Type\ResettingFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: dyt_user_resetting }
+
+    dyt_user.username.form.type:
+        class: Dyt\UserBundle\Form\Type\UsernameFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: dyt_user_username }

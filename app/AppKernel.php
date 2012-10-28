@@ -13,18 +13,16 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            //new Symfony\Bundle\DoctrineBundle\DoctrineBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            //new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new Propel\PropelBundle\PropelBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new Dyt\WebsiteBundle\DytWebsiteBundle(),
             new Dyt\UserBundle\DytUserBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
-            //new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
-            //new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new Propel\PropelBundle\PropelBundle(),
-            new Mopa\BootstrapBundle\MopaBootstrapBundle(),
-            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

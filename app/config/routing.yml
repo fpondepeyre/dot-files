@@ -1,6 +1,5 @@
-DytWebsiteBundle:
-    resource: "@DytWebsiteBundle/Controller/"
-    type:     annotation
+dyt_website:
+    resource: "@DytWebsiteBundle/Resources/config/routing.yml"
     prefix:   /
 
 fos_user_security:
@@ -24,6 +23,6 @@ fos_user_change_password:
 
 # Internal routing configuration to handle ESI
 #_internal:
-#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#   prefix:   /_internal
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal
 
