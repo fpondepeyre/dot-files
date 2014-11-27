@@ -8,17 +8,17 @@
   safecrlf = false
 
 [alias]
-  ci   = commit
-  di   = diff --word-diff
-  sdi  = diff --staged --word-diff
+  ci = commit
+  di = diff --word-diff
+  sdi = diff --staged --word-diff
   sdiff = diff --staged --word-diff
-  st   = status
-  sta  = stash
-  br   = branch -avv
-  co   = checkout
-  cat  = cat-file -p
-	lg = log --graph   --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s   %Cgreen(%an %ar)%Creset'
-  lga  = "!sh -c 'git log --author=\"$1\" -p $2' -"
+  st = status
+  sta = stash
+  br = branch -avv
+  co = checkout
+  cat = cat-file -p
+  lg = log --graph   --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s   %Cgreen(%an %ar)%Creset'
+  lga = "!sh -c 'git log --author=\"$1\" -p $2' -"
   lint = "!sh -c 'git status | awk \"/modified/ {print \\$3} /new file/ {print \\$4}\" | xargs -L 1 php -l'"
   logg = log --oneline --graph
   tree = log --graph --decorate --pretty=oneline --abbrev-commit
@@ -33,20 +33,20 @@
   status = auto
 
 [push]
-	default = upstream
+  default = upstream
 
 [status]
-	showUntrackedFiles = all
+  showUntrackedFiles = all
 
 [diff]
-	wordRegex = .
+  wordRegex = .
 
 [pull]
-	rebase = preserve
+  rebase = preserve
 
 [merge]
-	log = true
-	conflictStyle = diff3
+  log = true
+  conflictStyle = diff3
 
 [rerere]
-	enabled = true
+  enabled = true
