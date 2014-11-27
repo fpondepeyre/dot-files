@@ -1,38 +1,52 @@
 [user]
-    name = Florian Pondepeyre
-    email = fpondepeyre.hrteam@tf1.fr
+  name = Florian Pondepeyre
+  email = fpondepeyre@gmail.com
 
 [core]
-    excludesfile="~/.gitignore"
-    autocrlf = input
-    safecrlf = false
+  excludesfile="~/.gitignore"
+  autocrlf = input
+  safecrlf = false
 
 [alias]
-    ci   = commit
-    di   = diff
-    sdi  = diff --staged
-    sdiff = diff --staged
-    st   = status
-    sta  = stash
-    br   = branch
-    co   = checkout
-    cat  = cat-file -p
-    lg   = log --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset%s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
-    lga  = "!sh -c 'git log --author=\"$1\" -p $2' -"
-    lint = "!sh -c 'git status | awk \"/modified/ {print \\$3} /new file/ {print \\$4}\" | xargs -L 1 php -l'"
-    logg = log --oneline --graph
-    tree = log --graph --decorate --pretty=oneline --abbrev-commit
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-    type = cat-file -t
-    dump = cat-file -p
+  ci   = commit
+  di   = diff --word-diff
+  sdi  = diff --staged --word-diff
+  sdiff = diff --staged --word-diff
+  st   = status
+  sta  = stash
+  br   = branch -avv
+  co   = checkout
+  cat  = cat-file -p
+	lg = log --graph   --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s   %Cgreen(%an %ar)%Creset'
+  lga  = "!sh -c 'git log --author=\"$1\" -p $2' -"
+  lint = "!sh -c 'git status | awk \"/modified/ {print \\$3} /new file/ {print \\$4}\" | xargs -L 1 php -l'"
+  logg = log --oneline --graph
+  tree = log --graph --decorate --pretty=oneline --abbrev-commit
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
 
 [color]
-    branch = auto
-    diff = auto
-    interactive = auto
-    status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
 
-[remote "origin"]
-    fetch = +refs/heads/*:refs/remotes/origin/*
-    url = git@github.com:fpondepeyre/dot-files.git
-    fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+[push]
+	default = upstream
+
+[status]
+	showUntrackedFiles = all
+
+[diff]
+	wordRegex = .
+
+[pull]
+	rebase = preserve
+
+[merge]
+	log = true
+	conflictStyle = diff3
+
+[rerere]
+	enabled = true
